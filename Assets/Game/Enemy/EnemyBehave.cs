@@ -10,9 +10,12 @@ public class EnemyBehave : MonoBehaviour {
     [SerializeField]
     private float _attackDistance;
     [SerializeField]
+    private float _attackCooldown;
+    [SerializeField]
     private float _slowTimeAmount;
 
     private Transform _player;
+    private bool _canAttack = true;
 
     // Use this for initialization
     void Start () {
@@ -29,14 +32,24 @@ public class EnemyBehave : MonoBehaviour {
         transform.LookAt(_player);
         transform.Translate(Vector3.forward * _speed * WibblyWobbly.deltaTime);
 
-        if (Vector3.Distance(transform.position, _player.position) < _attackDistance)
+        if (Vector3.Distance(transform.position, _player.position) < _attackDistance && _canAttack)
         {
-            // print("enemy in range!");
+            StartCoroutine(Attack());
         }
     }
 
     void OnDestroy()
     {
         WibblyWobbly.SlowTime(_slowTimeAmount);
+    }
+
+    private IEnumerator Attack()
+    {
+        _canAttack = false;
+        var health = _player.GetComponent<Health>();
+        health.DoDamage(1);
+        yield return new WaitForSeconds(_attackCooldown);
+        _canAttack = true;
+
     }
 }
