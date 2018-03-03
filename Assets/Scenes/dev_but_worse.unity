@@ -885,10 +885,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1101249373}
-  _controlMode: {fileID: 1066433689135578, guid: d1ee6912c285c0740a3ff29a6d60ca40,
+  _controlMode: {fileID: 1260726928104906, guid: 984cba2c0d6083c48bfdac4275320e20,
     type: 2}
   _moveSensitivity: 0.25
   _moveSpeed: 10
+  _rotateSensitivity: 0
 --- !u!114 &1161161941
 MonoBehaviour:
   m_ObjectHideFlags: 0

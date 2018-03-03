@@ -13,9 +13,14 @@ public class PlayerController : MonoBehaviour
     private float _moveSensitivity;
     [SerializeField]
     private float _moveSpeed;
+    [SerializeField]
+    [Range(0, 2)]
+    private float _rotateSensitivity;
 
     private IControlMode _input;
     private Vector3 _momentum;
+
+    private Quaternion _lookRotation;
 
     void Start()
     {
@@ -38,9 +43,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (_isAttacking)
-            return;
-
         Aim();
         Move();
     }
@@ -65,49 +67,25 @@ public class PlayerController : MonoBehaviour
 
     private void Aim()
     {
-        Aim(_input.MoveDirection != Vector3.zero ? _input.MoveDirection : _input.AimDirection);
+        bool isStill = _input.MoveDirection == Vector3.zero;
+        var targetDirection = isStill ? _input.AimDirection : _input.MoveDirection;
+        var targetRotation = (targetDirection == Vector3.zero) ?
+            transform.rotation :
+            Quaternion.LookRotation(targetDirection, Vector3.up);
+
+        _lookRotation = Quaternion.Lerp(transform.rotation, targetRotation, _rotateSensitivity);
+        transform.rotation = _lookRotation;
     }
 
-    private void Aim(Vector3 dir)
-    {
-        var lookAtPos = transform.position + dir;
-        transform.LookAt(lookAtPos);
-    }
-    
+
     private void Melee()
     {
-        if (_isAttacking)
-            return;
-
-        StartCoroutine(MeleeAttack());
+        print("melee!");
     }
-    
+
     private void Fire()
     {
-        if (_isAttacking)
-            return;
-
-        StartCoroutine(FireAttack());
-    }
-
-    private float _attackLength = 0.5f;
-    private bool _isAttacking;
-    private IEnumerator MeleeAttack()
-    {
-        _isAttacking = true;
-        print("melee!");
-        Aim(_input.AimDirection);
-        yield return new WaitForSeconds(_attackLength);
-        _isAttacking = false;
-    }
-    
-    private IEnumerator FireAttack()
-    {
-        _isAttacking = true;
         print("fire!");
-        Aim(_input.AimDirection);
-        yield return new WaitForSeconds(_attackLength);
-        _isAttacking = false;
     }
 
     private void Dash()
