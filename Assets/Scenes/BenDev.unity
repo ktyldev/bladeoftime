@@ -552,7 +552,7 @@ MonoBehaviour:
   _controlMode: {fileID: 1066433689135578, guid: d1ee6912c285c0740a3ff29a6d60ca40,
     type: 2}
   _moveSensitivity: 0.25
-  _moveSpeed: 5
+  _moveSpeed: 20
 --- !u!4 &603288341
 Transform:
   m_ObjectHideFlags: 0
