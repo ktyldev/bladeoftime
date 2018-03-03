@@ -12,7 +12,7 @@ public class Gamepad : MonoBehaviour, IControlMode
     public Vector3 MoveDirection { get { return GetMoveDirection(); } }
     public UnityEvent Melee { get; private set; }
     public UnityEvent Fire { get; private set; }
-    public bool IsAiming { get { return Input.GetAxisRaw("AimTrigger") > .3f; } }
+    public bool IsAiming { get { return Input.GetAxisRaw(GameTags.AimTrigger) > .3f; } }
 
     void Awake()
     {
@@ -22,7 +22,7 @@ public class Gamepad : MonoBehaviour, IControlMode
 
     void Update()
     {
-        if (Input.GetAxisRaw("Fire") > 0.3f)
+        if (Input.GetAxisRaw(GameTags.Fire) > 0.3f)
         {
             if (IsAiming && !_lastFire)
             {
@@ -35,7 +35,7 @@ public class Gamepad : MonoBehaviour, IControlMode
             _lastFire = false;
         }
 
-        if (Input.GetButtonDown("Melee"))
+        if (Input.GetButtonDown(GameTags.Melee))
         {
             Melee.Invoke();
         }
@@ -43,8 +43,8 @@ public class Gamepad : MonoBehaviour, IControlMode
 
     private Vector3 GetMoveDirection()
     {
-        var h = Input.GetAxis("Gamepad_Horizontal");
-        var v = Input.GetAxis("Gamepad_Vertical");
+        var h = Input.GetAxis(GameTags.GamepadMoveHorizontal);
+        var v = Input.GetAxis(GameTags.GamepadMoveVertical);
 
         return new Vector3(h, 0, v);
     }
@@ -52,8 +52,8 @@ public class Gamepad : MonoBehaviour, IControlMode
     private Vector3 GetAimDirection()
     {
         if (IsAiming) return GetMoveDirection();
-        var h = Input.GetAxis("RightH");
-        var v = Input.GetAxis("RightV");
+        var h = Input.GetAxis(GameTags.GamepadAimHorizontal);
+        var v = Input.GetAxis(GameTags.GamepadAimVertical);
 
         return new Vector3(h, 0, v);
     }
