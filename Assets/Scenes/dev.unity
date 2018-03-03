@@ -907,6 +907,7 @@ MonoBehaviour:
     type: 2}
   _moveSensitivity: 0.25
   _moveSpeed: 10
+  _rotateSensitivity: 0.94
   _meleeDistance: 5
   _meleeConeAngle: 30
 --- !u!114 &1161161941
