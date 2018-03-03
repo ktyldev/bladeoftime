@@ -133,7 +133,12 @@ public class PlayerController : MonoBehaviour
         _isAttacking = true;
         print("melee!");
         Aim(_input.AimDirection);
-        yield return new WaitForSeconds(_attackTime * _attackMoment);
+        float _movementOffset = (_momentum == Vector3.zero) ? 0.15f : 0f;
+        yield return new WaitForSeconds(
+            Mathf.Clamp((_attackTime * _attackMoment) + _movementOffset,
+            0f,
+            _attackTime
+        ));
 
         // cast from ~the middle of the player
         var ray = new Ray(transform.position + Vector3.up, transform.forward);
@@ -155,7 +160,11 @@ public class PlayerController : MonoBehaviour
             hitHealth.DoDamage();
         }
 
-        yield return new WaitForSeconds(_attackTime * (1f - _attackMoment));
+        yield return new WaitForSeconds(
+            Mathf.Clamp((_attackTime * (1f - _attackMoment)) - _movementOffset,
+            0f,
+            _attackTime
+        ));
         _isAttacking = false;
     }
 

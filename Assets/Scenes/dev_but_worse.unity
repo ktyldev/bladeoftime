@@ -155,6 +155,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minTime: 0.1
   _maxTime: 2
+  _timeIncreaseRate: 0.02
+--- !u!1001 &59976007
+Prefab:
+  m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
