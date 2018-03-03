@@ -719,8 +719,9 @@ MonoBehaviour:
   templates:
   - {fileID: 1536696236413526, guid: c19925c2dd09c2a49b99cc9bb4d1c504, type: 2}
   minDistanceFromPlayer: 7
-  _spawnFrequencyMax: 5
-  _spawnFrequencyMin: 0.5
+  _spawnDelayMax: 5
+  _spawnDelayMin: 0.5
+  _spawnDelayMultiplier: 0.99
 --- !u!1001 &1101249371
 Prefab:
   m_ObjectHideFlags: 0

@@ -8,11 +8,14 @@ using UnityEngine;
 public class EnemySpawner : Spawner
 {
     [SerializeField]
-    private float _spawnFrequencyMax;
+    private float _spawnDelayMax = 5f;
     [SerializeField]
-    private float _spawnFrequencyMin;
+    private float _spawnDelayMin = .5f;
+    [SerializeField]
+    [Range(0.95f, 1f)]
+    private float _spawnDelayMultiplier = .95f;
 
-    private float _spawnFrequency;
+    private float _spawnDelay;
     protected override bool CanSpawn(GameObject template)
     {
         return true;
@@ -28,7 +31,7 @@ public class EnemySpawner : Spawner
 
     private void Awake()
     {
-        _spawnFrequency = _spawnFrequencyMax;
+        _spawnDelay = _spawnDelayMax;
         StartCoroutine(SpawnRoutine());
     }
 
@@ -36,14 +39,14 @@ public class EnemySpawner : Spawner
     {
         while(true)
         {
-            yield return new WaitForSeconds(_spawnFrequency);
+            yield return new WaitForSeconds(_spawnDelay);
             Spawn();
-            _spawnFrequency = Mathf.Clamp(
-                _spawnFrequency * .98f,
-                _spawnFrequencyMin,
-                _spawnFrequencyMax
+            _spawnDelay = Mathf.Clamp(
+                _spawnDelay * _spawnDelayMultiplier,
+                _spawnDelayMin,
+                _spawnDelayMax
             );
-            print("spawn frequency: " + _spawnFrequency);
+            print("spawn frequency: " + _spawnDelay);
         }
     }
 }
