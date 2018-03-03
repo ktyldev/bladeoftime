@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
         _momentum = Vector3.Lerp(_momentum, dir, _moveSensitivity);
         transform.Translate(_momentum * _moveSpeed * Time.deltaTime, Space.World);
         anim.SetFloat("inputV", dir != Vector3.zero ? _momentum.magnitude * _moveSpeed : 0);
+        // TODO: Remove this
         if (Input.GetKey(KeyCode.Space))
         {
             anim.SetBool("jump", true);
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
+        anim.SetTrigger("dash");
         print("dash!");
     }
 }
