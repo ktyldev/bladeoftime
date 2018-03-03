@@ -3,6 +3,7 @@
 [Tt]emp/
 [Oo]bj/
 
+ProjectSettings/ProjectVersion.txt
 Assets/AssetStoreTools*
 
 # Visual Studio 2015 cache directory
