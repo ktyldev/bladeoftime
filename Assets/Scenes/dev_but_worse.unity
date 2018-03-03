@@ -888,8 +888,9 @@ MonoBehaviour:
   _controlMode: {fileID: 1260726928104906, guid: 984cba2c0d6083c48bfdac4275320e20,
     type: 2}
   _moveSensitivity: 0.25
-  _moveSpeed: 10
-  _rotateSensitivity: 0
+  _moveSpeed: 8
+  _dashSpeed: 14
+  _rotateSensitivity: 0.18
 --- !u!114 &1161161941
 MonoBehaviour:
   m_ObjectHideFlags: 0
