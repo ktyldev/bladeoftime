@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
         var hitObjects = Physics.SphereCastAll(ray, 1f) // this radius parameter doesn't seem to work :/
             .Where(h =>
             {
-                return Vector3.Angle(_input.AimDirection, h.transform.position - transform.position) < _meleeConeAngle / 2f;
+                return Vector3.Angle(transform.forward, h.transform.position - transform.position) < _meleeConeAngle / 2f;
             })
             .Where(h =>
             {
