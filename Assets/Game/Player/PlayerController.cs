@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (_isAttacking)
+            return;
+
         Aim();
         Move();
     }
@@ -62,20 +65,49 @@ public class PlayerController : MonoBehaviour
 
     private void Aim()
     {
-        var dir = (_input.AimDirection == Vector3.zero) ? _input.MoveDirection : _input.AimDirection;
+        Aim(_input.MoveDirection != Vector3.zero ? _input.MoveDirection : _input.AimDirection);
+    }
+
+    private void Aim(Vector3 dir)
+    {
         var lookAtPos = transform.position + dir;
         transform.LookAt(lookAtPos);
     }
-
-
+    
     private void Melee()
     {
-        print("melee!");
-    }
+        if (_isAttacking)
+            return;
 
+        StartCoroutine(MeleeAttack());
+    }
+    
     private void Fire()
     {
+        if (_isAttacking)
+            return;
+
+        StartCoroutine(FireAttack());
+    }
+
+    private float _attackLength = 0.5f;
+    private bool _isAttacking;
+    private IEnumerator MeleeAttack()
+    {
+        _isAttacking = true;
+        print("melee!");
+        Aim(_input.AimDirection);
+        yield return new WaitForSeconds(_attackLength);
+        _isAttacking = false;
+    }
+    
+    private IEnumerator FireAttack()
+    {
+        _isAttacking = true;
         print("fire!");
+        Aim(_input.AimDirection);
+        yield return new WaitForSeconds(_attackLength);
+        _isAttacking = false;
     }
 
     private void Dash()
