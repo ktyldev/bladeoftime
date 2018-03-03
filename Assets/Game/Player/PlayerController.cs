@@ -161,9 +161,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator DoDash(float duration)
     {
         _isDashing = true;
-        anim.SetBool("jump", true); // TODO: delete this
         yield return new WaitForSeconds(duration);
-        anim.SetBool("jump", false); // TODO: delete this
         _isDashing = false;
     }
 }

@@ -908,7 +908,7 @@ MonoBehaviour:
   _moveSensitivity: 0.25
   _moveSpeed: 8
   _dashSpeed: 13
-  _dashDuration: 1.8
+  _dashDuration: 1.3
   _rotateSensitivity: 1
   _meleeDistance: 5
   _meleeConeAngle: 30
