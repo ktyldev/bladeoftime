@@ -46,7 +46,6 @@ public class EnemySpawner : Spawner
                 _spawnDelayMin,
                 _spawnDelayMax
             );
-            print("spawn frequency: " + _spawnDelay);
         }
     }
 }
