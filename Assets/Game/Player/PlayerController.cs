@@ -47,6 +47,14 @@ public class PlayerController : MonoBehaviour
         _momentum = Vector3.Lerp(_momentum, dir, _moveSensitivity);
         transform.Translate(_momentum * _moveSpeed * Time.deltaTime, Space.World);
         anim.SetFloat("inputV", dir != Vector3.zero ? _momentum.magnitude * _moveSpeed : 0);
+        if (Input.GetKey(KeyCode.Space))
+        {
+            anim.SetBool("jump", true);
+        }
+        else
+        {
+            anim.SetBool("jump", false);
+        }
 
     }
 
@@ -57,6 +65,7 @@ public class PlayerController : MonoBehaviour
         transform.LookAt(lookAtPos);
     }
 
+
     private void Melee()
     {
         print("melee!");
@@ -66,4 +75,5 @@ public class PlayerController : MonoBehaviour
     {
         print("fire!");
     }
+
 }
