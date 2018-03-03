@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour {
     [Range(0f, 1f)]
     private float sensitivity = 0.3f;
 
+    private Vector3 velocity = Vector3.zero;
     private Vector3 _offset;
     //public Material postFXMaterial;
 
@@ -30,6 +31,6 @@ public class CameraController : MonoBehaviour {
             return;
 
         var targetPosition = _trackedObject.transform.position + _offset;
-        transform.position = Vector3.Lerp(transform.position, targetPosition, sensitivity);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, sensitivity);
     }
 }
