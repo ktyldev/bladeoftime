@@ -109,6 +109,8 @@ public class PlayerController : MonoBehaviour
             return;
 
         string trigger = string.Format("melee0{0}", Random.Range(1, 6).ToString());
+
+        anim.SetFloat("inputV", 0f);
         anim.SetTrigger(trigger);
         StartCoroutine(MeleeAttack());
     }
