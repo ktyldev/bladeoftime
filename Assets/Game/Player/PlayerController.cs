@@ -21,12 +21,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Range(0, 2)]
     private float _rotateSensitivity;
+
     [SerializeField]
     private float _meleeDistance;
     [SerializeField]
     private float _meleeConeAngle;
     [SerializeField]
     private float _attackTime;
+
+    [SerializeField]
+    private float _shootDistance;
 
     private IControlMode _input;
     private Vector3 _momentum;
@@ -134,8 +138,8 @@ public class PlayerController : MonoBehaviour
         {
             print(hit.gameObject);
             hit.gameObject.GetComponent<Health>().DoDamage();
-
         }
+
         yield return new WaitForSeconds(_attackTime);
         _isAttacking = false;
     }
@@ -145,6 +149,16 @@ public class PlayerController : MonoBehaviour
         _isAttacking = true;
         print("fire!");
         Aim(_input.AimDirection);
+
+        var ray = new Ray(transform.position + Vector3.up, transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, _shootDistance))
+        {
+            var enemy = hit.collider.gameObject;
+            var enemyHealth = enemy.GetComponent<Health>();
+            enemyHealth.DoDamage(1);
+        }
+
         yield return new WaitForSeconds(_attackTime);
         _isAttacking = false;
     }
