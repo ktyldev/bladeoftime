@@ -43,8 +43,8 @@ public class Gamepad : MonoBehaviour, IControlMode
 
     private Vector3 GetMoveDirection()
     {
-        var h = Input.GetAxis("Horizontal");
-        var v = Input.GetAxis("Vertical");
+        var h = Input.GetAxis("Gamepad_Horizontal");
+        var v = Input.GetAxis("Gamepad_Vertical");
 
         return new Vector3(h, 0, v);
     }
