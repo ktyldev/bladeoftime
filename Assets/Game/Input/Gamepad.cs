@@ -12,14 +12,14 @@ public class Gamepad : MonoBehaviour, IControlMode
     public Vector3 MoveDirection { get { return GetMoveDirection(); } }
     public UnityEvent Melee { get; private set; }
     public UnityEvent Fire { get; private set; }
+    public UnityEvent Dash { get; private set; }
     public bool IsAiming { get { return Input.GetAxisRaw(GameTags.AimTrigger) > .3f; } }
-    // 'A' Button
-    public UnityEvent Dash { get { throw new System.NotImplementedException(); } }
 
     void Awake()
     {
         Melee = new UnityEvent();
         Fire = new UnityEvent();
+        Dash = new UnityEvent();
     }
 
     void Update()
@@ -40,6 +40,11 @@ public class Gamepad : MonoBehaviour, IControlMode
         if (Input.GetButtonDown(GameTags.Melee))
         {
             Melee.Invoke();
+        }
+
+        if (Input.GetButtonDown(GameTags.Dash))
+        {
+            Dash.Invoke();
         }
     }
 

@@ -20,14 +20,14 @@ public class MouseKeyboard : MonoBehaviour, IControlMode
     public Vector3 MoveDirection { get { return GetMoveDirection(); } }
     public UnityEvent Melee { get; private set; }
     public UnityEvent Fire { get; private set; }
+    public UnityEvent Dash { get; private set; }
     public bool IsAiming { get { return Input.GetMouseButton(_aimButton); } }
-    // Spacebar
-    public UnityEvent Dash { get { throw new System.NotImplementedException(); } }
 
     void Awake()
     {
         Melee = new UnityEvent();
         Fire = new UnityEvent();
+        Dash = new UnityEvent();
 
         _hitPlane = new Plane(Vector3.up, Vector3.zero);
     }
@@ -42,6 +42,11 @@ public class MouseKeyboard : MonoBehaviour, IControlMode
         if (Input.GetMouseButtonDown(_fireButton))
         {
             (IsAiming ? Fire : Melee).Invoke();
+        }
+
+        if (Input.GetKeyDown(_dashButton))
+        {
+            Dash.Invoke();
         }
     }
     

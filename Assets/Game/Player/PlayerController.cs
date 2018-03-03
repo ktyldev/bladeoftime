@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
         _input.Melee.AddListener(Melee);
         _input.Fire.AddListener(Fire);
+        _input.Dash.AddListener(Dash);
     }
 
     void Update()
@@ -60,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private void Aim()
     {
-        var dir = _input.AimDirection;
+        var dir = (_input.AimDirection == Vector3.zero) ? _input.MoveDirection : _input.AimDirection;
         var lookAtPos = transform.position + dir;
         transform.LookAt(lookAtPos);
     }
@@ -76,4 +77,8 @@ public class PlayerController : MonoBehaviour
         print("fire!");
     }
 
+    private void Dash()
+    {
+        print("dash!");
+    }
 }
