@@ -1068,6 +1068,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 6fddbc653921d324a905fb9a67efedf1, type: 2}
+    - target: {fileID: 114044460174969124, guid: c6978472b0e29a1409d35978a103cd8b,
+        type: 2}
+      propertyPath: _slowTimeAmount
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65393910041254566, guid: c6978472b0e29a1409d35978a103cd8b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c6978472b0e29a1409d35978a103cd8b, type: 2}

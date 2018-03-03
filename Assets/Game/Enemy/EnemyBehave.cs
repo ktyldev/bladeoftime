@@ -9,6 +9,8 @@ public class EnemyBehave : MonoBehaviour {
     private float _speed;
     [SerializeField]
     private float _attackDistance;
+    [SerializeField]
+    private float _slowTimeAmount;
 
     private Transform _player;
 
@@ -35,6 +37,6 @@ public class EnemyBehave : MonoBehaviour {
 
     void OnDestroy()
     {
-        WibblyWobbly.SlowTime(.1f);
+        WibblyWobbly.SlowTime(_slowTimeAmount);
     }
 }
