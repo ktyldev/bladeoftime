@@ -33,6 +33,16 @@ public class SFXManager : AudioManager
     public void PlaySound(string soundName)
     {
         var sound = sounds.SingleOrDefault(o => o.soundName == soundName);
+
+        if (sound == null)
+        {
+            print("tried to play sound \'" + soundName + "\', no such sound exists");
+            return;
+        }
+
+        if (sound.soundObject == null)
+            return;
+
         PlaySound(sound.soundObject);
     }
 }
