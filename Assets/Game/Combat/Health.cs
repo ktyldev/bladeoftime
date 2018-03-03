@@ -13,6 +13,20 @@ public class Health : MonoBehaviour
 
     public UnityEvent Death { get; private set; }
 
+    public void DoDamage(int damage)
+    {
+        Value -= damage;
+        if (Value <= 0)
+        {
+            Death.Invoke();
+        }
+    }
+
+    public void DoDamage()
+    {
+        DoDamage(1);
+    }
+
     void Awake()
     {
         Death = new UnityEvent();
@@ -21,17 +35,5 @@ public class Health : MonoBehaviour
     void Start()
     {
         Value = _initialValue;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && Value != 0)
-        {
-            Value--;
-            if (Value == 0)
-            {
-                Death.Invoke();
-            }
-        }
     }
 }

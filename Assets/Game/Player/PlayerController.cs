@@ -129,10 +129,11 @@ public class PlayerController : MonoBehaviour
             .Where(h => h != null)
             .ToArray();
 
-
         foreach (var hit in hitObjects)
         {
             print(hit.gameObject);
+            hit.gameObject.GetComponent<Health>().DoDamage();
+
         }
         yield return new WaitForSeconds(_attackTime);
         _isAttacking = false;
