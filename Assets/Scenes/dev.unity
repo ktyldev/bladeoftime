@@ -249,7 +249,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -814,6 +814,16 @@ Prefab:
     - target: {fileID: 4373375938983858, guid: c6978472b0e29a1409d35978a103cd8b, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114044460174969124, guid: c6978472b0e29a1409d35978a103cd8b,
+        type: 2}
+      propertyPath: _speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114044460174969124, guid: c6978472b0e29a1409d35978a103cd8b,
+        type: 2}
+      propertyPath: _attackDistance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6978472b0e29a1409d35978a103cd8b, type: 2}
