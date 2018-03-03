@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Range(0, 2)]
     private float _rotateSensitivity;
+
     [SerializeField]
     private float _meleeDistance;
     [SerializeField]
@@ -28,12 +29,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _attackTime;
 
+    [SerializeField]
+    private float _shootDistance;
+    [SerializeField]
+    private float _baseGunCooldown; // This is affected by wibbly wobbly time
+
     private IControlMode _input;
     private Vector3 _momentum;
     private Quaternion _lookRotation;
 
     private bool _isDashing = false;
     private bool _isAttacking;
+    private bool _gunOnCooldown;
 
     private void Awake()
     {
@@ -102,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     private void Fire()
     {
-        if (_isAttacking || _isDashing)
+        if (_isAttacking || _isDashing || _gunOnCooldown)
             return;
 
         StartCoroutine(FireAttack());
@@ -134,8 +141,8 @@ public class PlayerController : MonoBehaviour
         {
             print(hit.gameObject);
             hit.gameObject.GetComponent<Health>().DoDamage();
-
         }
+
         yield return new WaitForSeconds(_attackTime);
         _isAttacking = false;
     }
@@ -145,10 +152,28 @@ public class PlayerController : MonoBehaviour
         _isAttacking = true;
         print("fire!");
         Aim(_input.AimDirection);
+
+        var ray = new Ray(transform.position + Vector3.up, transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, _shootDistance))
+        {
+            var enemy = hit.collider.gameObject;
+            var enemyHealth = enemy.GetComponent<Health>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.DoDamage(1);
+            }
+        }
+        
         yield return new WaitForSeconds(_attackTime);
         _isAttacking = false;
+        _gunOnCooldown = true;
+        var cooldownTime = _baseGunCooldown * Mathf.Pow(1 / WibblyWobbly.TimeSpeed, 2);
+        print(cooldownTime);
+        yield return new WaitForSeconds(cooldownTime);
+        _gunOnCooldown = false;
     }
-
+    
     private void Dash()
     {
         if (_isDashing || _momentum == Vector3.zero || _input.MoveDirection == Vector3.zero)
