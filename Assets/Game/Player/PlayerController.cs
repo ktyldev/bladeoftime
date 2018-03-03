@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
@@ -20,6 +21,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Range(0, 2)]
     private float _rotateSensitivity;
+    private float _meleeDistance;
+    [SerializeField]
+    private float _meleeConeAngle;
 
     private IControlMode _input;
     private Vector3 _momentum;
@@ -75,7 +79,6 @@ public class PlayerController : MonoBehaviour
         _lookRotation = Quaternion.Lerp(transform.rotation, targetRotation, _rotateSensitivity);
         transform.rotation = _lookRotation;
     }
-
 
     private void Melee()
     {
