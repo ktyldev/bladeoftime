@@ -907,9 +907,12 @@ MonoBehaviour:
     type: 2}
   _moveSensitivity: 0.25
   _moveSpeed: 10
-  _rotateSensitivity: 0.94
+  _dashSpeed: 20
+  _dashDuration: 1
+  _rotateSensitivity: 1
   _meleeDistance: 5
   _meleeConeAngle: 30
+  _attackTime: 0.5
 --- !u!114 &1161161941
 MonoBehaviour:
   m_ObjectHideFlags: 0
