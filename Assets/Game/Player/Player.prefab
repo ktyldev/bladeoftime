@@ -5401,12 +5401,12 @@ MonoBehaviour:
   anim: {fileID: 95212207097851730}
   _controlMode: {fileID: 1260726928104906, guid: 984cba2c0d6083c48bfdac4275320e20,
     type: 2}
-  _moveSensitivity: 0.25
+  _moveSensitivity: 0.2
   _moveSpeed: 8
   _dashSpeed: 14
   _dashDuration: 0.6
   _rotateSensitivity: 0.3
-  _meleeDistance: 2.5
+  _meleeDistance: 3
   _meleeConeAngle: 130
   _attackTime: 1.5
   _attackMoment: 0.6

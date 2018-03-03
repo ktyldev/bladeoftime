@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour
 
     private IControlMode _input;
     private Vector3 _momentum;
-    private Quaternion _lookRotation;
 
     private bool _isDashing = false;
     private bool _isAttacking;
@@ -74,20 +73,38 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Move();
+
         if (_isBusy)
             return;
-
         Aim();
-        Move();
     }
 
     private void Move()
     {
-        var dir = _isDashing ? transform.forward :_input.MoveDirection;
-        var speed = _isDashing ? _dashSpeed : _moveSpeed;
+        Vector3 dir;
+        float speed;
+        if (_isDashing)
+        {
+            dir = transform.forward;
+            speed = _dashSpeed;
+        }
+        else
+        {
+            dir = _input.MoveDirection;
+            if (_isAttacking)
+            {
+                speed = 0;
+                anim.SetFloat("inputV", 0f);
+            }
+            else
+            {
+                speed = _moveSpeed;
+                anim.SetFloat("inputV", dir != Vector3.zero ? _momentum.magnitude * _moveSpeed : 0);
+            }
+        }
         _momentum = Vector3.Lerp(_momentum, dir, _moveSensitivity);
         transform.Translate(_momentum * speed * Time.deltaTime, Space.World);
-        anim.SetFloat("inputV", dir != Vector3.zero ? _momentum.magnitude * _moveSpeed : 0);
     }
 
     private void Aim()
@@ -96,10 +113,12 @@ public class PlayerController : MonoBehaviour
             return;
         bool isStill = _input.MoveDirection == Vector3.zero;
         var targetDirection = isStill ? _input.AimDirection : _input.MoveDirection;
-        var targetRotation = (targetDirection == Vector3.zero) ? transform.rotation : Quaternion.LookRotation(targetDirection, Vector3.up);
+
+        if (targetDirection == Vector3.zero)
+            return;
+        var targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
         
-        _lookRotation = Quaternion.Lerp(transform.rotation, targetRotation, _rotateSensitivity);
-        transform.rotation = _lookRotation;
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _rotateSensitivity);
     }
 
     private void Aim(Vector3 dir)
@@ -219,12 +238,8 @@ public class PlayerController : MonoBehaviour
         var start = Time.time;
         anim.SetTrigger("dash");
 
-        while (Time.time - start < duration)
-        {
-            transform.Translate(transform.forward * _dashSpeed * Time.deltaTime, Space.World);
-            yield return new WaitForEndOfFrame();
-        }
-        
+        yield return new WaitForSeconds(duration);
+
         _isDashing = false;
     }
 }
