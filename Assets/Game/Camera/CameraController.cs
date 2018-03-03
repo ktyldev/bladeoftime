@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
-    
-    public float lerpT;
-    public float distance;
-    public float angle;
+
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float sensitivity = 0.3f;
+
+    private Vector3 _offset;
     //public Material postFXMaterial;
 
     private Transform _trackedObject;
 
     void Start() {
         var player = GameObject.FindGameObjectWithTag(GameTags.Player);
-
         _trackedObject = player.transform;
+        _offset = transform.position - _trackedObject.transform.position;
     }
 
     /*
@@ -27,9 +29,7 @@ public class CameraController : MonoBehaviour {
         if (_trackedObject == null)
             return;
 
-        var rotation = Quaternion.Euler(angle, 0, 0);
-        var targetPosition = _trackedObject.transform.position + rotation * new Vector3(0, 0, -distance);
-        transform.position = Vector3.Lerp(transform.position, targetPosition, lerpT);
-        transform.LookAt(_trackedObject);
+        var targetPosition = _trackedObject.transform.position + _offset;
+        transform.position = Vector3.Lerp(transform.position, targetPosition, sensitivity);
     }
 }
