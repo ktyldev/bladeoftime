@@ -2,6 +2,7 @@
 {
     public const string Player = "Player";
     public const string UI = "UI";
+    public const string Sound = "Sound";
     public const string Time = "Time";
 
     // Inputs

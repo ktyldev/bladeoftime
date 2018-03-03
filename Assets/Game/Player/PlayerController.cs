@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using Extensions;
 
 [RequireComponent(typeof(Health))]
 public class PlayerController : MonoBehaviour
@@ -148,6 +149,7 @@ public class PlayerController : MonoBehaviour
 
         string trigger = string.Format("melee0{0}", Random.Range(1, 6).ToString());
 
+        this.Find<SFXManager>("Sound").PlaySound("attack01");
         anim.SetFloat("inputV", 0f);
         anim.SetTrigger(trigger);
         StartCoroutine(MeleeAttack());

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - UI
   - Time
+  - Sound
   layers:
   - Default
   - TransparentFX

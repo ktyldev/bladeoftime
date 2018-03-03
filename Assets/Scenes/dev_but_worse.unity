@@ -960,7 +960,7 @@ GameObject:
   - component: {fileID: 1116009677}
   m_Layer: 0
   m_Name: SFX
-  m_TagString: Untagged
+  m_TagString: Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -976,7 +976,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7fc9fc335c7a3f459c71721e874107a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - soundName: attack01
+    soundObject: {fileID: 1239468702115816, guid: 97d82fc9365321d43b74acdbe9f6545e,
+      type: 2}
 --- !u!82 &1116009678
 AudioSource:
   m_ObjectHideFlags: 0
