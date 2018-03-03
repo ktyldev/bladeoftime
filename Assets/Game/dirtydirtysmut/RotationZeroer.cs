@@ -7,19 +7,9 @@ public class RotationZeroer : MonoBehaviour
     [SerializeField]
     private Transform _fuckedModel;
 
-    // Use this for initialization
-    void Start()
-    {
+    public bool IsFucked { get { return _fuckedModel.transform.localEulerAngles.y != 0; } }
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void UnFuckRotation()
+    public void UnFuck()
     {
         _fuckedModel.transform.localEulerAngles = new Vector3();
     }

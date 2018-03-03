@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _baseGunCooldown; // This is affected by wibbly wobbly time
 
-    // Rule 34
-    public UnityEvent ZeroModelRotation = new UnityEvent();
+    // I want to be sick
+    private RotationZeroer _zeroer;
 
     public float CooldownPercent { get; private set; }
 
@@ -61,6 +61,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         CooldownPercent = 1;
+
+        _zeroer = GetComponentInChildren<RotationZeroer>();
+        if (_zeroer == null)
+            throw new System.Exception("Everything's fucked :/");
 
         GetComponent<Health>().Death.AddListener(() =>
         {
@@ -103,6 +107,12 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                // fucking fight me
+                if (_zeroer.IsFucked)
+                {
+                    _zeroer.UnFuck();
+                }
+
                 speed = _moveSpeed;
                 anim.SetFloat("inputV", dir != Vector3.zero ? _momentum.magnitude * _moveSpeed : 0);
             }
@@ -189,8 +199,6 @@ public class PlayerController : MonoBehaviour
             _attackTime
         ));
         _isAttacking = false;
-
-        ZeroModelRotation.Invoke();
     }
 
     private IEnumerator FireAttack()
@@ -236,8 +244,6 @@ public class PlayerController : MonoBehaviour
             return;
 
         StartCoroutine(DoDash(_dashDuration));
-
-        ZeroModelRotation.Invoke();
     }
 
     IEnumerator DoDash(float duration)
