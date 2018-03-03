@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Health))]
 public class PlayerController : MonoBehaviour
@@ -36,6 +37,9 @@ public class PlayerController : MonoBehaviour
     private float _shootDistance;
     [SerializeField]
     private float _baseGunCooldown; // This is affected by wibbly wobbly time
+
+    // Rule 34
+    public UnityEvent ZeroModelRotation = new UnityEvent();
 
     public float CooldownPercent { get; private set; }
 
@@ -185,6 +189,8 @@ public class PlayerController : MonoBehaviour
             _attackTime
         ));
         _isAttacking = false;
+
+        ZeroModelRotation.Invoke();
     }
 
     private IEnumerator FireAttack()
@@ -230,6 +236,8 @@ public class PlayerController : MonoBehaviour
             return;
 
         StartCoroutine(DoDash(_dashDuration));
+
+        ZeroModelRotation.Invoke();
     }
 
     IEnumerator DoDash(float duration)

@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  _attackDistance: 2
+  _attackDistance: 1
   _attackCooldown: 2
   _slowTimeAmount: 0
 --- !u!114 &114151344601405880
