@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class PlayerController : MonoBehaviour
 {
+    public Animator anim;
     [SerializeField]
     private GameObject _controlMode;
     [SerializeField]
@@ -45,6 +46,8 @@ public class PlayerController : MonoBehaviour
         var dir = _input.MoveDirection;
         _momentum = Vector3.Lerp(_momentum, dir, _moveSensitivity);
         transform.Translate(_momentum * _moveSpeed * Time.deltaTime, Space.World);
+        anim.SetFloat("inputV", _momentum.magnitude*_moveSpeed);
+
     }
 
     private void Aim()
