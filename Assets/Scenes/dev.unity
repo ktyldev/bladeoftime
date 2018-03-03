@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03667947fa5c19d409b17cdb5b9ebf9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlMode: {fileID: 1066433689135578, guid: d1ee6912c285c0740a3ff29a6d60ca40,
+  _controlMode: {fileID: 1260726928104906, guid: 984cba2c0d6083c48bfdac4275320e20,
     type: 2}
   _moveSensitivity: 0.25
   _moveSpeed: 20

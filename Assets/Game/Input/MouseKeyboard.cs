@@ -43,8 +43,8 @@ public class MouseKeyboard : MonoBehaviour, IControlMode
     
     private Vector3 GetMoveDirection()
     {
-        var h = Input.GetAxis("Horizontal");
-        var v = Input.GetAxis("Vertical");
+        var h = Input.GetAxis(GameTags.KeyboardHorizontal);
+        var v = Input.GetAxis(GameTags.KeyboardVertical);
 
         return new Vector3(h, 0, v);
     }
