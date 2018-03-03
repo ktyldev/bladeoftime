@@ -8,6 +8,8 @@ public class PlayerAim : MonoBehaviour
     private GameObject _lineRenderer;
     [SerializeField]
     private float _lineLength;
+    [SerializeField]
+    private float _lineHeight;
 
     private LineRenderer _line;
     private IControlMode _input;
@@ -26,12 +28,21 @@ public class PlayerAim : MonoBehaviour
         if (_input.IsAiming && !_active)
         {
             _active = true;
-            print("aim start");
         }
         if (!_input.IsAiming && _active)
         {
             _active = false;
-            print("aim end");
+        }
+
+        if (_active)
+        {
+            var start = transform.position + Vector3.up * _lineHeight;
+            var end = start + _input.AimDirection * _lineLength;
+            _line.SetPositions(new[] { start, end });
+        }
+        else
+        {
+            _line.SetPositions(new [] { Vector3.zero, Vector3.zero });
         }
     }
 }

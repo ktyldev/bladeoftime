@@ -58,7 +58,6 @@ public class Gamepad : MonoBehaviour, IControlMode
 
     private Vector3 GetAimDirection()
     {
-        if (IsAiming) return GetMoveDirection();
         var h = Input.GetAxis(GameTags.GamepadAimHorizontal);
         var v = Input.GetAxis(GameTags.GamepadAimVertical);
 
