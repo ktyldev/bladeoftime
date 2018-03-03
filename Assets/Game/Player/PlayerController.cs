@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _baseGunCooldown; // This is affected by wibbly wobbly time
 
+    public float CooldownPercent { get; private set; }
+
     private IControlMode _input;
     private Vector3 _momentum;
     private Quaternion _lookRotation;
@@ -50,6 +52,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        CooldownPercent = 1;
+
         GetComponent<Health>().Death.AddListener(() =>
         {
             print("game over!");
@@ -117,7 +121,6 @@ public class PlayerController : MonoBehaviour
 
         StartCoroutine(FireAttack());
     }
-
     
     private IEnumerator MeleeAttack()
     {
@@ -140,10 +143,9 @@ public class PlayerController : MonoBehaviour
             .Where(h => h != null)
             .ToArray();
 
-        foreach (var hit in hitObjects)
+        foreach (var hitHealth in hitObjects)
         {
-            print(hit.gameObject);
-            hit.gameObject.GetComponent<Health>().DoDamage();
+            hitHealth.DoDamage();
         }
 
         yield return new WaitForSeconds(_attackTime);
@@ -170,9 +172,19 @@ public class PlayerController : MonoBehaviour
         
         yield return new WaitForSeconds(_attackTime);
         _isAttacking = false;
+
         _gunOnCooldown = true;
         var cooldownTime = _baseGunCooldown * Mathf.Pow(1 / WibblyWobbly.TimeSpeed, 2);
-        print(cooldownTime);
+
+        var cooldownStart = Time.time;
+        var elapsedTime = 0f;
+        while (Time.time - cooldownStart < cooldownTime)
+        {
+            elapsedTime += Time.deltaTime;
+            CooldownPercent = elapsedTime / cooldownTime;
+            yield return new WaitForEndOfFrame();
+        }
+
         yield return new WaitForSeconds(cooldownTime);
         _gunOnCooldown = false;
     }
@@ -183,14 +195,12 @@ public class PlayerController : MonoBehaviour
             return;
 
         StartCoroutine(DoDash(_dashDuration));
-        print("dash!");
     }
 
     IEnumerator DoDash(float duration)
     {
         _isDashing = true;
         var start = Time.time;
-        //anim.SetFloat("inputV", 0);
         anim.SetTrigger("dash");
 
         while (Time.time - start < duration)
