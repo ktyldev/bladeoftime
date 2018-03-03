@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float _shootDistance;
+    [SerializeField]
+    private float _baseGunCooldown; // This is affected by wibbly wobbly time
 
     private IControlMode _input;
     private Vector3 _momentum;
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _isDashing = false;
     private bool _isAttacking;
+    private bool _gunOnCooldown;
 
     private void Awake()
     {
@@ -106,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     private void Fire()
     {
-        if (_isAttacking || _isDashing)
+        if (_isAttacking || _isDashing || _gunOnCooldown)
             return;
 
         StartCoroutine(FireAttack());
@@ -156,13 +159,21 @@ public class PlayerController : MonoBehaviour
         {
             var enemy = hit.collider.gameObject;
             var enemyHealth = enemy.GetComponent<Health>();
-            enemyHealth.DoDamage(1);
+            if (enemyHealth != null)
+            {
+                enemyHealth.DoDamage(1);
+            }
         }
-
+        
         yield return new WaitForSeconds(_attackTime);
         _isAttacking = false;
+        _gunOnCooldown = true;
+        var cooldownTime = _baseGunCooldown * Mathf.Pow(1 / WibblyWobbly.TimeSpeed, 2);
+        print(cooldownTime);
+        yield return new WaitForSeconds(cooldownTime);
+        _gunOnCooldown = false;
     }
-
+    
     private void Dash()
     {
         if (_isDashing || _momentum == Vector3.zero || _input.MoveDirection == Vector3.zero)

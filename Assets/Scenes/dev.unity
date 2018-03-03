@@ -839,8 +839,9 @@ MonoBehaviour:
   templates:
   - {fileID: 1536696236413526, guid: c19925c2dd09c2a49b99cc9bb4d1c504, type: 2}
   minDistanceFromPlayer: 20
-  _spawnFrequencyMax: 0
-  _spawnFrequencyMin: 0
+  _spawnDelayMax: 5
+  _spawnDelayMin: 0.5
+  _spawnDelayMultiplier: 0.95
 --- !u!1001 &1101249371
 Prefab:
   m_ObjectHideFlags: 0
@@ -1064,6 +1065,7 @@ MonoBehaviour:
   _meleeConeAngle: 30
   _attackTime: 0.5
   _shootDistance: 50
+  _baseGunCooldown: 5
 --- !u!114 &1161161941
 MonoBehaviour:
   m_ObjectHideFlags: 0
