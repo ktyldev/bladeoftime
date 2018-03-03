@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
         Aim(_input.AimDirection);
 
         // cast from ~the middle of the player
-        var ray = new Ray(transform.position + Vector3.up, _input.AimDirection);
+        var ray = new Ray(transform.position + Vector3.up, transform.forward);
         var hitObjects = Physics.SphereCastAll(ray, 1f) // this radius parameter doesn't seem to work :/
             .Where(h =>
             {
