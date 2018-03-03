@@ -20,7 +20,7 @@ public class EnemyBehave : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.LookAt(_player);
-        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * _speed * WibblyWobbly.deltaTime);
 
         if (Vector3.Distance(transform.position, _player.position) < _attackDistance)
         {
