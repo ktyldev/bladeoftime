@@ -15,6 +15,11 @@ public class EnemyBehave : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _player = this.Find(GameTags.Player).transform;
+        GetComponent<Health>().Death.AddListener(() =>
+        {
+            print("enemy killed!");
+            Destroy(this.gameObject);
+        });
 	}
 	
 	// Update is called once per frame
@@ -26,5 +31,10 @@ public class EnemyBehave : MonoBehaviour {
         {
             // print("enemy in range!");
         }
+    }
+
+    void OnDestroy()
+    {
+        WibblyWobbly.SlowTime(.1f);
     }
 }

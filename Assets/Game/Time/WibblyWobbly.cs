@@ -25,9 +25,23 @@ public class WibblyWobbly : MonoBehaviour
 
         Instance = this;
     }
-    
+
+    void Start()
+    {
+    }
+
     void Update()
     {
-        _timeSpeed += _timeIncreaseRate * Time.deltaTime;
+        _timeSpeed = Mathf.Clamp(_timeSpeed + _timeIncreaseRate * Time.deltaTime, _minTime, _maxTime);
+    }
+
+    protected void _slowTime(float amount)
+    {
+        _timeSpeed = Mathf.Clamp(_timeSpeed - amount, _minTime, _maxTime);
+    }
+
+    public static void SlowTime(float amount)
+    {
+        Instance._slowTime(amount);
     }
 }

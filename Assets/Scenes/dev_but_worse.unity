@@ -633,6 +633,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 609139897}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &818007985
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1101249371
 Prefab:
   m_ObjectHideFlags: 0
@@ -843,7 +885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1101249373}
-  _controlMode: {fileID: 1260726928104906, guid: 984cba2c0d6083c48bfdac4275320e20,
+  _controlMode: {fileID: 1066433689135578, guid: d1ee6912c285c0740a3ff29a6d60ca40,
     type: 2}
   _moveSensitivity: 0.25
   _moveSpeed: 10
