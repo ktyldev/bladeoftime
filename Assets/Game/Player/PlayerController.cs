@@ -35,17 +35,19 @@ public class PlayerController : MonoBehaviour
     private bool _isDashing = false;
     private bool _isAttacking;
 
+    private void Awake()
+    {
+        _input = Instantiate(_controlMode, transform)
+            .GetComponent<IControlMode>();
+    }
+
     void Start()
     {
         GetComponent<Health>().Death.AddListener(() =>
         {
             print("game over!");
         });
-
-
-        _input = Instantiate(_controlMode)
-            .GetComponent<IControlMode>();
-
+        
         if (_input == null)
             throw new System.Exception();
 
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (_isAttacking)
+        if (_isAttacking || _isDashing)
             return;
 
         Aim();
@@ -149,18 +151,26 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (_isDashing)
+        if (_isDashing || _momentum == Vector3.zero)
             return;
 
         StartCoroutine(DoDash(_dashDuration));
-        anim.SetTrigger("dash");
         print("dash!");
     }
 
     IEnumerator DoDash(float duration)
     {
         _isDashing = true;
-        yield return new WaitForSeconds(duration);
+        var start = Time.time;
+        //anim.SetFloat("inputV", 0);
+        anim.SetTrigger("dash");
+
+        while (Time.time - start < duration)
+        {
+            transform.Translate(transform.forward * _dashSpeed * Time.deltaTime, Space.World);
+            yield return new WaitForEndOfFrame();
+        }
+        
         _isDashing = false;
     }
 }

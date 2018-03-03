@@ -944,6 +944,7 @@ GameObject:
   - component: {fileID: 1161161939}
   - component: {fileID: 1161161940}
   - component: {fileID: 1161161941}
+  - component: {fileID: 1161161942}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -982,7 +983,7 @@ MonoBehaviour:
   _moveSensitivity: 0.25
   _moveSpeed: 10
   _dashSpeed: 20
-  _dashDuration: 1
+  _dashDuration: 0.5
   _rotateSensitivity: 1
   _meleeDistance: 5
   _meleeConeAngle: 30
@@ -999,6 +1000,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialValue: 5
+--- !u!114 &1161161942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1161161938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1739594e9022b8648afe463f298fc979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1444305599
 Prefab:
   m_ObjectHideFlags: 0
