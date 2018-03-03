@@ -10,6 +10,8 @@ public class MouseKeyboard : MonoBehaviour, IControlMode
     private int _fireButton = 0; // Left mouse button
     [SerializeField]
     private int _aimButton = 1; // Right mouse button
+    [SerializeField]
+    private KeyCode _dashButton;
 
     private Plane _hitPlane;
     private Transform _player;
@@ -19,6 +21,8 @@ public class MouseKeyboard : MonoBehaviour, IControlMode
     public UnityEvent Melee { get; private set; }
     public UnityEvent Fire { get; private set; }
     public bool IsAiming { get { return Input.GetMouseButton(_aimButton); } }
+    // Spacebar
+    public UnityEvent Dash { get { throw new System.NotImplementedException(); } }
 
     void Awake()
     {
