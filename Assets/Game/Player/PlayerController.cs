@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
@@ -14,19 +15,25 @@ public class PlayerController : MonoBehaviour
 
     private IControlMode _input;
     private Vector3 _momentum;
-    
+
     void Start()
     {
+        GetComponent<Health>().Death.AddListener(() =>
+        {
+            print("game over!");
+        });
+
+
         _input = Instantiate(_controlMode)
             .GetComponent<IControlMode>();
-        
+
         if (_input == null)
             throw new System.Exception();
 
         _input.Melee.AddListener(Melee);
         _input.Fire.AddListener(Fire);
     }
-    
+
     void Update()
     {
         Aim();
