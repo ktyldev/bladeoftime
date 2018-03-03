@@ -66,6 +66,6 @@ public class MouseKeyboard : MonoBehaviour, IControlMode
 
         var dir = aimPos - _player.position;
 
-        return new Vector3(-dir.z, 0, dir.x).normalized;
+        return new Vector3(dir.x, 0, dir.z).normalized;
     }
 }

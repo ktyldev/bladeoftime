@@ -44,11 +44,13 @@ public class PlayerController : MonoBehaviour
     {
         var dir = _input.MoveDirection;
         _momentum = Vector3.Lerp(_momentum, dir, _moveSensitivity);
-        transform.Translate(_momentum * _moveSpeed * Time.deltaTime);
+        transform.Translate(_momentum * _moveSpeed * Time.deltaTime, Space.World);
     }
 
     private void Aim()
     {
         var dir = _input.AimDirection;
+        var lookAtPos = transform.position + dir;
+        transform.LookAt(lookAtPos);
     }
 }
