@@ -604,23 +604,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 312040473}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &485063844 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1038059131798282, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1002339231}
---- !u!114 &485063846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 485063844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada62641f37bbab48a2aabbac4cbbce3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fuckedModel: {fileID: 656628097}
 --- !u!1 &501802960
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,11 +797,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 609139897}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &656628097 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4601909287384988, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1002339231}
 --- !u!1 &931583257
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,11 +850,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114115386911552272, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: ZeroModelRotation.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4546484650199812, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -923,47 +896,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4627734611682038, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.060806748
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512260655299500, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 114115386911552272, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: _meleeDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114115386911552272, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: _controlMode
-      value: 
-      objectReference: {fileID: 1066433689135578, guid: d1ee6912c285c0740a3ff29a6d60ca40,
-        type: 2}
-    - target: {fileID: 114115386911552272, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: ZeroModelRotation.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114115386911552272, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: ZeroModelRotation.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114115386911552272, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: ZeroModelRotation.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 485063846}
-    - target: {fileID: 114115386911552272, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: ZeroModelRotation.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UnFuckRotation
-      objectReference: {fileID: 0}
-    - target: {fileID: 114115386911552272, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: ZeroModelRotation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 0.060806744
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}

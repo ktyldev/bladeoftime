@@ -34,6 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4340111440110756}
+  - component: {fileID: 114846600743602474}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -2710,7 +2711,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939707537320962}
-  m_LocalRotation: {x: -0.38952273, y: 0.5901458, z: -0.5128444, w: -0.4868167}
+  m_LocalRotation: {x: -0.38952276, y: 0.5901459, z: -0.51284444, w: -0.48681673}
   m_LocalPosition: {x: -0.07073497, y: 3.330669e-17, z: -1.1213252e-16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4255,7 +4256,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1790360735913910}
-  m_LocalRotation: {x: -0.093746535, y: 0.6978551, z: 0.707469, w: 0.06080675}
+  m_LocalRotation: {x: -0.093746535, y: 0.6978551, z: 0.707469, w: 0.060806744}
   m_LocalPosition: {x: -0.05543403, y: 0.0017306843, z: 0.098653734}
   m_LocalScale: {x: 1.0000004, y: 1.0000006, z: 1.0000005}
   m_Children:
@@ -5399,14 +5400,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 95212207097851730}
-  _controlMode: {fileID: 1260726928104906, guid: 984cba2c0d6083c48bfdac4275320e20,
+  _controlMode: {fileID: 1066433689135578, guid: d1ee6912c285c0740a3ff29a6d60ca40,
     type: 2}
   _moveSensitivity: 0.2
   _moveSpeed: 8
   _dashSpeed: 14
   _dashDuration: 0.6
   _rotateSensitivity: 0.3
-  _meleeDistance: 4.2
+  _meleeDistance: 3
   _meleeConeAngle: 150
   _attackTime: 1.5
   _attackMoment: 0.6
@@ -5438,6 +5439,18 @@ MonoBehaviour:
   _lineRenderer: {fileID: 1525498544084900}
   _lineLength: 50
   _lineHeight: 0
+--- !u!114 &114846600743602474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1038059131798282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada62641f37bbab48a2aabbac4cbbce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fuckedModel: {fileID: 4601909287384988}
 --- !u!120 &120392083293452440
 LineRenderer:
   m_ObjectHideFlags: 1
