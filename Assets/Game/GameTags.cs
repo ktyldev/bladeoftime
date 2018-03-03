@@ -17,4 +17,8 @@
     public const string GamepadAimHorizontal = "RightH";
     public const string GamepadAimVertical = "RightV";
     public const string AimTrigger = "AimTrigger";
+
+    // Player Prefs
+    public const string SFXVolume = "fx_volume";
+    public const string MusicVolume = "music_volume";
 }

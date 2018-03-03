@@ -104,6 +104,9 @@ public class PlayerController : MonoBehaviour
         if (_isAttacking || _isDashing)
             return;
 
+        string trigger = string.Format("melee0{0}", Random.Range(1, 6).ToString());
+        print(trigger);
+        anim.SetTrigger(trigger);
         StartCoroutine(MeleeAttack());
     }
 
