@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         var dir = _input.MoveDirection;
         _momentum = Vector3.Lerp(_momentum, dir, _moveSensitivity);
         transform.Translate(_momentum * _moveSpeed * Time.deltaTime, Space.World);
-        anim.SetFloat("inputV", _momentum.magnitude*_moveSpeed);
+        anim.SetFloat("inputV", dir != Vector3.zero ? _momentum.magnitude * _moveSpeed : 0);
 
     }
 
