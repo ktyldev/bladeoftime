@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     private float _meleeConeAngle;
     [SerializeField]
     private float _attackTime;
+    [SerializeField]
+    [Range(0, 1)]
+    private float _attackMoment;
 
     [SerializeField]
     private float _shootDistance;
@@ -128,6 +131,7 @@ public class PlayerController : MonoBehaviour
         _isAttacking = true;
         print("melee!");
         Aim(_input.AimDirection);
+        yield return new WaitForSeconds(_attackTime * _attackMoment);
 
         // cast from ~the middle of the player
         var ray = new Ray(transform.position + Vector3.up, transform.forward);
@@ -149,7 +153,7 @@ public class PlayerController : MonoBehaviour
             hitHealth.DoDamage();
         }
 
-        yield return new WaitForSeconds(_attackTime);
+        yield return new WaitForSeconds(_attackTime * (1f - _attackMoment));
         _isAttacking = false;
     }
 
@@ -192,7 +196,7 @@ public class PlayerController : MonoBehaviour
     
     private void Dash()
     {
-        if (_isDashing || _momentum == Vector3.zero || _input.MoveDirection == Vector3.zero)
+        if (_isDashing || _isAttacking || _momentum == Vector3.zero || _input.MoveDirection == Vector3.zero)
             return;
 
         StartCoroutine(DoDash(_dashDuration));
