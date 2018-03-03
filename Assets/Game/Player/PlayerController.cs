@@ -23,15 +23,8 @@ public class PlayerController : MonoBehaviour
         if (_input == null)
             throw new System.Exception();
 
-        _input.Fire.AddListener(() =>
-        {
-            print("fire!");
-        });
-
-        _input.Melee.AddListener(() =>
-        {
-            print("melee!");
-        });
+        _input.Melee.AddListener(Melee);
+        _input.Fire.AddListener(Fire);
     }
     
     void Update()
@@ -52,5 +45,15 @@ public class PlayerController : MonoBehaviour
         var dir = _input.AimDirection;
         var lookAtPos = transform.position + dir;
         transform.LookAt(lookAtPos);
+    }
+
+    private void Melee()
+    {
+        print("melee!");
+    }
+
+    private void Fire()
+    {
+        print("fire!");
     }
 }
