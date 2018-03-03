@@ -5406,8 +5406,8 @@ MonoBehaviour:
   _dashSpeed: 14
   _dashDuration: 0.6
   _rotateSensitivity: 0.3
-  _meleeDistance: 3
-  _meleeConeAngle: 130
+  _meleeDistance: 4.2
+  _meleeConeAngle: 150
   _attackTime: 1.5
   _attackMoment: 0.6
   _shootDistance: 50
