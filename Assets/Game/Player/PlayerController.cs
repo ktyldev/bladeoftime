@@ -160,13 +160,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator DoDash(float duration)
     {
         _isDashing = true;
-<<<<<<< HEAD
-        
         yield return new WaitForSeconds(duration);
-        
-=======
-        yield return new WaitForSeconds(duration);
->>>>>>> d4e76db1d218248ea60cebdf3f0a606fa16234f9
         _isDashing = false;
     }
 }
