@@ -50,5 +50,7 @@ public class PlayerController : MonoBehaviour
     private void Aim()
     {
         var dir = _input.AimDirection;
+        var lookAtPos = transform.position + dir;
+        transform.LookAt(lookAtPos);
     }
 }
