@@ -51,3 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59edb104ad10334d956eff7b24b6bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fireButton: 0
+  _aimButton: 1
+  _dashButton: 32

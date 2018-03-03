@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Extensions;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealthBar : MonoBehaviour
 {
     [SerializeField]
     private Image _healthBar;
