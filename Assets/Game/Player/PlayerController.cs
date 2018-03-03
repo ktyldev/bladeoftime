@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (_isDashing || _momentum == Vector3.zero)
+        if (_isDashing || _momentum == Vector3.zero || _input.MoveDirection == Vector3.zero)
             return;
 
         StartCoroutine(DoDash(_dashDuration));
