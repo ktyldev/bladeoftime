@@ -6,6 +6,7 @@
     // Inputs
     public const string Fire = "Fire";
     public const string Melee = "Melee";
+    public const string Dash = "Dash";
 
     public const string KeyboardHorizontal = "Keyboard_Horizontal";
     public const string KeyboardVertical = "Keyboard_Vertical";
