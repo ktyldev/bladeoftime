@@ -13,6 +13,8 @@ public class WibblyWobbly : MonoBehaviour
     private float _timeIncreaseRate;
 
     public static float deltaTime { get { return Instance.DeltaTime; } }
+    public static float TimeSpeed { get { return Instance._timeSpeed; } }
+
     private static WibblyWobbly Instance { get; set; }
 
     private float DeltaTime { get { return Time.deltaTime * _timeSpeed; } }

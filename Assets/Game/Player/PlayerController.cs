@@ -28,13 +28,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _attackTime;
 
-    private bool _isAttacking;
     private IControlMode _input;
     private Vector3 _momentum;
     private Quaternion _lookRotation;
 
     private bool _isDashing = false;
-    private IEnumerator dashRoutine;
+    private bool _isAttacking;
 
     void Start()
     {
@@ -152,8 +151,8 @@ public class PlayerController : MonoBehaviour
     {
         if (_isDashing)
             return;
-        dashRoutine = DoDash(_dashDuration);
-        StartCoroutine(dashRoutine);
+
+        StartCoroutine(DoDash(_dashDuration));
         anim.SetTrigger("dash");
         print("dash!");
     }
