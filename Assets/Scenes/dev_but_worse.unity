@@ -113,6 +113,49 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &11374778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 11374779}
+  - component: {fileID: 11374780}
+  m_Layer: 0
+  m_Name: Time
+  m_TagString: Time
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &11374779
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 11374778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11374780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 11374778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd33de90372ff040857f6c45e70f0d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minTime: 0.1
+  _maxTime: 2
+  _timeIncreaseRate: 0.1
 --- !u!1 &106838022
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,48 +676,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 609139897}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &818007985
-Prefab:
+--- !u!1 &721327680 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1756159547276914, guid: c6978472b0e29a1409d35978a103cd8b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1444305599}
+--- !u!65 &721327681
+BoxCollider:
   m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 721327680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4318121358391064, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 68e72c3e3c548ef4ea54bb47077a08f9, type: 2}
-  m_IsPrefabParent: 0
+  m_Size: {x: 1, y: 2.06, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &1101249371
 Prefab:
   m_ObjectHideFlags: 0
@@ -885,12 +903,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1101249373}
-  _controlMode: {fileID: 1260726928104906, guid: 984cba2c0d6083c48bfdac4275320e20,
+  _controlMode: {fileID: 1066433689135578, guid: d1ee6912c285c0740a3ff29a6d60ca40,
     type: 2}
   _moveSensitivity: 0.25
   _moveSpeed: 8
-  _dashSpeed: 14
-  _rotateSensitivity: 0.18
+  _dashSpeed: 13
+  _dashDuration: 1.3
+  _rotateSensitivity: 1
+  _meleeDistance: 5
+  _meleeConeAngle: 30
+  _attackTime: 0.5
 --- !u!114 &1161161941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,6 +932,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 23391333661823390, guid: c6978472b0e29a1409d35978a103cd8b,
+        type: 2}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4373375938983858, guid: c6978472b0e29a1409d35978a103cd8b, type: 2}
       propertyPath: m_LocalPosition.x
       value: 7.8
@@ -945,14 +972,30 @@ Prefab:
     - target: {fileID: 114044460174969124, guid: c6978472b0e29a1409d35978a103cd8b,
         type: 2}
       propertyPath: _speed
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114044460174969124, guid: c6978472b0e29a1409d35978a103cd8b,
         type: 2}
       propertyPath: _attackDistance
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 65393910041254566, guid: c6978472b0e29a1409d35978a103cd8b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23391333661823390, guid: c6978472b0e29a1409d35978a103cd8b,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6fddbc653921d324a905fb9a67efedf1, type: 2}
+    - target: {fileID: 23391333661823390, guid: c6978472b0e29a1409d35978a103cd8b,
+        type: 2}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6fddbc653921d324a905fb9a67efedf1, type: 2}
+    m_RemovedComponents:
+    - {fileID: 65393910041254566, guid: c6978472b0e29a1409d35978a103cd8b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c6978472b0e29a1409d35978a103cd8b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1446863999
