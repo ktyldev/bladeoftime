@@ -150,9 +150,10 @@ public class PlayerController : MonoBehaviour
         if (_isBusy)
             return;
 
-        string trigger = string.Format("melee0{0}", Random.Range(1, 6).ToString());
+        int attackNumber = Random.Range(1, 6);
+        string trigger = string.Format("melee0{0}", attackNumber);
+        _sfx.PlaySound(string.Format("attack0{0}", attackNumber));
 
-        _sfx.PlaySound("attack01");
         anim.SetFloat("inputV", 0f);
         anim.SetTrigger(trigger);
         StartCoroutine(MeleeAttack());

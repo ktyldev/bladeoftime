@@ -9,31 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1284886019633616}
+  m_RootGameObject: {fileID: 1777007548895982}
   m_IsPrefabParent: 1
---- !u!1 &1284886019633616
+--- !u!1 &1777007548895982
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4975615344946970}
-  - component: {fileID: 82457801624527046}
-  - component: {fileID: 114667714819659784}
+  - component: {fileID: 4619785292324946}
+  - component: {fileID: 82140941018452200}
   m_Layer: 0
-  m_Name: SFX
-  m_TagString: Sound
+  m_Name: Attack02
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4975615344946970
+--- !u!4 &4619785292324946
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1284886019633616}
+  m_GameObject: {fileID: 1777007548895982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,16 +40,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82457801624527046
+--- !u!82 &82140941018452200
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1284886019633616}
+  m_GameObject: {fileID: 1777007548895982}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 02317e3d274dc114eaf96c8d8b9aee81, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -121,30 +120,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114667714819659784
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1284886019633616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7fc9fc335c7a3f459c71721e874107a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - soundName: attack01
-    soundObject: {fileID: 1239468702115816, guid: 97d82fc9365321d43b74acdbe9f6545e,
-      type: 2}
-  - soundName: attack02
-    soundObject: {fileID: 1777007548895982, guid: 296f0934eb1a36043b092d7e66fd86f5,
-      type: 2}
-  - soundName: attack03
-    soundObject: {fileID: 1251825709112790, guid: 3f138d528400e064b80b28b57c36f31d,
-      type: 2}
-  - soundName: attack04
-    soundObject: {fileID: 1659532886337052, guid: e825e076d362fe84abadc11da009529d,
-      type: 2}
-  - soundName: attack05
-    soundObject: {fileID: 1898014788095654, guid: 23d2ed1c062839545885651cfcfd6f83,
-      type: 2}
