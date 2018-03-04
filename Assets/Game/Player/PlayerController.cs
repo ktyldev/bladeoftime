@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Extensions;
 
-[RequireComponent(typeof(Health), typeof(PlayerShoot))]
+[RequireComponent(typeof(Health), typeof(PlayerShoot), typeof(PlayerMelee))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
@@ -47,11 +47,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 _momentum;
     private SFXManager _sfx;
     private PlayerShoot _gun;
+    private PlayerMelee _melee;
 
     private bool _isDashing = false;
-    private bool _isAttacking;
 
-    private bool _isBusy { get { return (_isAttacking || _isDashing); } }
+    private bool _isBusy { get { return (_melee.IsAttacking || _isDashing); } }
 
     private void Awake()
     {
@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         _sfx = this.Find<SFXManager>(GameTags.Sound);
         _gun = GetComponent<PlayerShoot>();
+        _melee = GetComponent<PlayerMelee>();
 
         _zeroer = GetComponentInChildren<RotationZeroer>();
         if (_zeroer == null)
@@ -108,7 +109,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             dir = _input.MoveDirection;
-            if (_isAttacking || _input.IsAiming)
+            if (_melee.IsAttacking || _input.IsAiming)
             {
                 speed = 0;
                 _anim.SetFloat("inputV", 0f);
@@ -155,15 +156,8 @@ public class PlayerController : MonoBehaviour
         if (_isBusy)
             return;
 
-        int attackNumber = Random.Range(1, 6);
-        string trigger = string.Format("melee0{0}", attackNumber);
-        _anim.SetTrigger(trigger);
-
-        _anim.SetFloat("inputV", 0f);
-
-        _sfx.PlayRandomSoundDelayed("attack", 5, .1f);
-
-        StartCoroutine(MeleeAttack());
+        Aim(_input.AimDirection);
+        _melee.Melee();
     }
 
     private void Fire()
@@ -172,55 +166,6 @@ public class PlayerController : MonoBehaviour
             return;
 
         _gun.Fire();
-    }
-    
-    private IEnumerator MeleeAttack()
-    {
-        _isAttacking = true;
-        Aim(_input.AimDirection);
-        float _movementOffset = (_momentum == Vector3.zero) ? 0.15f : 0f;
-
-        yield return new WaitForSeconds(
-            Mathf.Clamp((_attackTime * _attackMoment) + _movementOffset,
-            0f,
-            _attackTime
-        ));
-
-        // cast from ~the middle of the player
-        var ray = new Ray(transform.position + Vector3.up, transform.forward);
-        var hitObjects = Physics.SphereCastAll(ray, 1f) // this radius parameter doesn't seem to work :/
-            .Where(h =>
-            {
-                return Vector3.Angle(transform.forward, h.transform.position - transform.position) < _meleeConeAngle / 2f;
-            })
-            .Where(h =>
-            {
-                return Vector3.Distance(transform.position, h.transform.position) < _meleeDistance; // Hacky distance
-            })
-            .Select(h => h.collider.gameObject.GetComponent<Health>())
-            .Where(h => h != null)
-            .ToArray();
-
-        if (hitObjects.Length > 0)
-        {
-            _sfx.PlayRandomSound("hit", 5);
-        }
-        else
-        {
-            _sfx.PlayRandomSound("nohit", 2);
-        }
-
-        foreach (var hitHealth in hitObjects)
-        {
-            hitHealth.DoDamage();
-        }
-
-        yield return new WaitForSeconds(
-            Mathf.Clamp((_attackTime * (1f - _attackMoment)) - _movementOffset,
-            0f,
-            _attackTime
-        ));
-        _isAttacking = false;
     }
     
     private void Dash()
