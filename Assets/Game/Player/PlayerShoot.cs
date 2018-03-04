@@ -75,7 +75,10 @@ public class PlayerShoot : MonoBehaviour
     {
         // TODO: Empty gun click
         if (_currentCharge < _shotChargeCost)
+        {
+            _sfx.PlayRandomSound("laser_empty", 5);
             return;
+        }
 
         _sfx.PlayRandomSound("laser", 10);
 
