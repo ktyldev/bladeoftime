@@ -15,7 +15,6 @@ public class PlayerShoot : MonoBehaviour
     private float _lineLength;
     [SerializeField]
     private float _lineHeight;
-
     [SerializeField]
     private GameObject _projectile;
     [SerializeField]
@@ -93,6 +92,11 @@ public class PlayerShoot : MonoBehaviour
         {
             _currentCharge += WibblyWobbly.deltaTime * _chargeSpeed;
         }
+    }
+
+    public void Recharge()
+    {
+        _currentCharge = _totalCharge;
     }
 
     private IEnumerator FadeLights()

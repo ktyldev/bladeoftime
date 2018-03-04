@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Extensions;
 using UnityEngine;
-using Extensions;
 
 public class AmmoPickup : Pickup {
 

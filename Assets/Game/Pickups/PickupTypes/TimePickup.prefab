@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4536656270354214}
   - component: {fileID: 135172653403026592}
-  - component: {fileID: 114358400058781332}
   - component: {fileID: 114445070135202328}
   m_Layer: 0
   m_Name: TimePickup
@@ -406,18 +405,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114358400058781332
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1041579588650704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca53693bfcb11714ba625631fc1896d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _range: 20
 --- !u!114 &114445070135202328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -429,7 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b4e6fdd4e8653a4da4e0cda9786ef2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeSlowAmount: 0.2
+  timeSlowAmount: 0.5
 --- !u!135 &135172653403026592
 SphereCollider:
   m_ObjectHideFlags: 1
