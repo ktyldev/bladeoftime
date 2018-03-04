@@ -6,10 +6,10 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    private int _initialValue;
+    private int _maxValue;
 
     public int Value { get; private set; }
-    public float Percentage { get { return (float)Value / _initialValue; } }
+    public float Percentage { get { return (float)Value / _maxValue; } }
 
     public UnityEvent Death { get; private set; }
     public UnityEvent Hit { get; private set; }
@@ -38,6 +38,9 @@ public class Health : MonoBehaviour
             return;
 
         Value += healAmount;
+        if (Value > _maxValue)
+            Value = _maxValue;
+
         Heal.Invoke();
     }
 
@@ -59,6 +62,6 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        Value = _initialValue;
+        Value = _maxValue;
     }
 }
