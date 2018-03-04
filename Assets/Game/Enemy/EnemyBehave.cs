@@ -21,7 +21,9 @@ public class EnemyBehave : MonoBehaviour {
     private float _lightFadeSpeed;
     [SerializeField]
     private float _lightFadeTime;
-
+    [SerializeField]
+    private GameObject _deathFX;
+    
     private Transform _player;
     private bool _canAttack = true;
     private bool _canScream = true;
@@ -65,6 +67,8 @@ public class EnemyBehave : MonoBehaviour {
         if (turnOn)
         {
             Destroy(gameObject);
+            var fx = Instantiate(_deathFX, transform.position, transform.rotation);
+            Destroy(fx, 2);
         }
     }
 	
