@@ -80,7 +80,12 @@ public class PlayerController : MonoBehaviour
             print("game over!");
             _anim.SetFloat("inputV", 0f);
             _anim.SetTrigger("deathAnimation");
-            _sfx.PlaySoundDelayed("death", .1f);
+            if (Random.Range(0, 100) == 0)
+            {
+
+            }
+
+            _sfx.PlaySoundDelayed((Random.Range(0, 100) == 0) ? "wilhelm" : "death", .1f);
             StartCoroutine(DoDeathZoom());
         });
 
