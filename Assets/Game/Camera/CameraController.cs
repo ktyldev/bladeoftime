@@ -52,6 +52,11 @@ public class CameraController : MonoBehaviour {
         Instance._targetFOV = value;
     }
 
+    public static void ZoomMultiply(float multiplier)
+    {
+        Instance._targetFOV *= multiplier;
+    }
+
     public static void Pulse()
     {
         Instance._cam.fieldOfView *= .9f;

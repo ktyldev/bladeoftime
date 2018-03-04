@@ -207,7 +207,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator DoDeathZoom()
     {
         yield return new WaitForSeconds(.8f);
-        CameraController.Zoom(45);
+        CameraController.ZoomMultiply(.6f);
     }
 
     IEnumerator DoDamagedHit()
