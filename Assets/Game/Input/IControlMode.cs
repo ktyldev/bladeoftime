@@ -10,4 +10,6 @@ public interface IControlMode
     bool IsFiring { get; } // Fire continuously
     UnityEvent Dash { get; }
     bool IsAiming { get; }
+
+    bool AnyButtonPressed { get; } // for restarts etc...
 }

@@ -16,6 +16,16 @@ public class Gamepad : MonoBehaviour, IControlMode
     public bool IsAiming { get { return Input.GetAxisRaw(GameTags.AimTrigger) > .3f; } }
     public bool IsFiring { get { return Input.GetAxisRaw(GameTags.AimTrigger) > .3f; } }
 
+    public bool AnyButtonPressed
+    {
+        get { return (
+            IsAiming ||
+            IsFiring ||
+            Input.GetButtonDown(GameTags.Dash) ||
+            Input.GetButtonDown(GameTags.Melee)
+        ); }
+    }
+
     void Awake()
     {
         Melee = new UnityEvent();

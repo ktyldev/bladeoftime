@@ -24,6 +24,18 @@ public class MouseKeyboard : MonoBehaviour, IControlMode
     public bool IsAiming { get { return Input.GetMouseButton(_aimButton); } }
     public bool IsFiring { get { return Input.GetMouseButton(_fireButton); } }
 
+    public bool AnyButtonPressed
+    {
+        get
+        {
+            return (
+                IsAiming ||
+                IsFiring ||
+                Input.GetKeyDown(_dashButton)
+            );
+        }
+    }
+
     void Awake()
     {
         Melee = new UnityEvent();

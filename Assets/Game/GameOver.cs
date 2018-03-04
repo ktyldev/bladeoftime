@@ -25,7 +25,8 @@ public class GameOver : MonoBehaviour
     private void Update()
     {
         if (_canReload) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (_input.AnyButtonPressed)
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
