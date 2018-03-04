@@ -16,10 +16,13 @@ public class EnemyBehave : MonoBehaviour {
 
     private Transform _player;
     private bool _canAttack = true;
+    private bool _canScream = true;
     private Rigidbody _physics;
+    private SFXManager _sfx;
 
     // Use this for initialization
     void Start () {
+        _sfx = this.Find<SFXManager>(GameTags.Sound);
         _player = this.Find(GameTags.Player).transform;
         _physics = GetComponent<Rigidbody>();
 
@@ -34,7 +37,15 @@ public class EnemyBehave : MonoBehaviour {
         transform.LookAt(_player);
         _physics.velocity = transform.forward * _speed * 2f *  WibblyWobbly.TimeSpeed;
 
-        if (Vector3.Distance(transform.position, _player.position) < _attackDistance && _canAttack)
+        if (GameOver.IsEnded())
+            return;
+
+        float _playerDist = Vector3.Distance(transform.position, _player.position);
+        if (_playerDist < _attackDistance + 1f && _canScream)
+        {
+            StartCoroutine(Scream());
+        }
+        if (_playerDist < _attackDistance && _canAttack)
         {
             StartCoroutine(Attack());
         }
@@ -47,5 +58,13 @@ public class EnemyBehave : MonoBehaviour {
         health.DoDamage(1);
         yield return new WaitForSeconds(_attackCooldown);
         _canAttack = true;
+    }
+
+    private IEnumerator Scream()
+    {
+        _canScream = false;
+        _sfx.PlaySound("enemy_scream");
+        yield return new WaitForSeconds(_attackCooldown);
+        _canScream = true;
     }
 }

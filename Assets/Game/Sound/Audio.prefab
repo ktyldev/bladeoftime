@@ -246,3 +246,6 @@ MonoBehaviour:
   - soundName: wilhelm
     soundObject: {fileID: 1159175802775288, guid: 4bf1211f7458cef42af5aba32a735295,
       type: 2}
+  - soundName: enemy_scream
+    soundObject: {fileID: 1186591034399070, guid: ffb575954bc6cf447a73dff46bb6a71d,
+      type: 2}
