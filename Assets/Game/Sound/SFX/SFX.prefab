@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4975615344946970}
   - component: {fileID: 82457801624527046}
   - component: {fileID: 114667714819659784}
+  - component: {fileID: 114254610025386490}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Sound
@@ -121,6 +122,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114254610025386490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284886019633616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79da6f0c1412aae4dbb7e3fa29d3b5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loop: {fileID: 1424536500784696, guid: e43697f541172aa42ad0ae502728985b, type: 2}
 --- !u!114 &114667714819659784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,4 +193,49 @@ MonoBehaviour:
       type: 2}
   - soundName: nohit02
     soundObject: {fileID: 1493353049312868, guid: 9a24e4925dd0ff946bf699eae07d422b,
+      type: 2}
+  - soundName: laser01
+    soundObject: {fileID: 1733056488328354, guid: fa643bd7f25a7ce4c8a4d5191fbbc316,
+      type: 2}
+  - soundName: laser02
+    soundObject: {fileID: 1239215338790800, guid: aac56d37f3e90b342919c0ed499ec0be,
+      type: 2}
+  - soundName: laser03
+    soundObject: {fileID: 1980199022727088, guid: d3294fe9e3dd86843945197d1ecefeaa,
+      type: 2}
+  - soundName: laser04
+    soundObject: {fileID: 1025345570024580, guid: bd051629773b81846876dc54f07aba93,
+      type: 2}
+  - soundName: laser05
+    soundObject: {fileID: 1046075754103226, guid: b7ceb71d22676db409664ad2e77451c9,
+      type: 2}
+  - soundName: laser06
+    soundObject: {fileID: 1292658282835738, guid: be5400d2e9193534f91119b04f32f2cd,
+      type: 2}
+  - soundName: laser07
+    soundObject: {fileID: 1636360635371074, guid: 623beb6cc0c389044a452e2100a4519a,
+      type: 2}
+  - soundName: laser08
+    soundObject: {fileID: 1973856284909368, guid: 3cc5c5620030b47409faa1142bc4ca12,
+      type: 2}
+  - soundName: laser09
+    soundObject: {fileID: 1299573486871932, guid: e7807af67e459024f88d99cf330003d5,
+      type: 2}
+  - soundName: laser10
+    soundObject: {fileID: 1949518640452768, guid: d8677f36becce4d40978b7d1e37b54a1,
+      type: 2}
+  - soundName: laser_empty01
+    soundObject: {fileID: 1637067119417438, guid: d0737c92f42812a418bb06a29d682f22,
+      type: 2}
+  - soundName: laser_empty02
+    soundObject: {fileID: 1591797509282870, guid: 20ddec8b428681645920b8f84602b114,
+      type: 2}
+  - soundName: laser_empty03
+    soundObject: {fileID: 1410729263698686, guid: c9e8a3bee70cc7e4d960ca24550e6a45,
+      type: 2}
+  - soundName: laser_empty04
+    soundObject: {fileID: 1858103461611648, guid: 24387f7efc37cc44287b3d3e5e3bdf52,
+      type: 2}
+  - soundName: laser_empty05
+    soundObject: {fileID: 1102125660272160, guid: 2ae36cdeb0709d944b299246090608a9,
       type: 2}
