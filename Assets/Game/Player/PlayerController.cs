@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private IControlMode _input;
     private Vector3 _momentum;
+    private SFXManager _sfx;
 
     private bool _isDashing = false;
     private bool _isAttacking;
@@ -62,6 +63,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         CooldownPercent = 1;
+
+        _sfx = this.Find<SFXManager>(GameTags.Sound);
 
         _zeroer = GetComponentInChildren<RotationZeroer>();
         if (_zeroer == null)
@@ -149,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
         string trigger = string.Format("melee0{0}", Random.Range(1, 6).ToString());
 
-        this.Find<SFXManager>("Sound").PlaySound("attack01");
+        _sfx.PlaySound("attack01");
         anim.SetFloat("inputV", 0f);
         anim.SetTrigger(trigger);
         StartCoroutine(MeleeAttack());
