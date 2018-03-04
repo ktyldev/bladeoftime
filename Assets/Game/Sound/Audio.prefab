@@ -1,0 +1,242 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1048143979212488}
+  m_IsPrefabParent: 1
+--- !u!1 &1048143979212488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4997807400975460}
+  - component: {fileID: 82869704499881170}
+  - component: {fileID: 114755696158914600}
+  - component: {fileID: 114661331896441040}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Sound
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4997807400975460
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048143979212488}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82869704499881170
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048143979212488}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &114661331896441040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048143979212488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79da6f0c1412aae4dbb7e3fa29d3b5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loop: {fileID: 1424536500784696, guid: e43697f541172aa42ad0ae502728985b, type: 2}
+  filterFreq: 400
+--- !u!114 &114755696158914600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048143979212488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fc9fc335c7a3f459c71721e874107a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - soundName: attack01
+    soundObject: {fileID: 1239468702115816, guid: 97d82fc9365321d43b74acdbe9f6545e,
+      type: 2}
+  - soundName: attack02
+    soundObject: {fileID: 1777007548895982, guid: 296f0934eb1a36043b092d7e66fd86f5,
+      type: 2}
+  - soundName: attack03
+    soundObject: {fileID: 1251825709112790, guid: 3f138d528400e064b80b28b57c36f31d,
+      type: 2}
+  - soundName: attack04
+    soundObject: {fileID: 1659532886337052, guid: e825e076d362fe84abadc11da009529d,
+      type: 2}
+  - soundName: attack05
+    soundObject: {fileID: 1898014788095654, guid: 23d2ed1c062839545885651cfcfd6f83,
+      type: 2}
+  - soundName: hurt01
+    soundObject: {fileID: 1412999353171972, guid: ff8a862d7539b904ea3271778210c5c4,
+      type: 2}
+  - soundName: hurt02
+    soundObject: {fileID: 1423429089558488, guid: 37397cc5b5883ae4d96b5eb7ecdce4c0,
+      type: 2}
+  - soundName: hurt03
+    soundObject: {fileID: 1544634140379252, guid: ac61ab3b106861c489b9c5001838e739,
+      type: 2}
+  - soundName: hurt04
+    soundObject: {fileID: 1150845036356604, guid: 6879931c46400784f87a83a7cae50b17,
+      type: 2}
+  - soundName: hit01
+    soundObject: {fileID: 1760497478518738, guid: 81601365c600fcb4189780e0dbda59dc,
+      type: 2}
+  - soundName: hit02
+    soundObject: {fileID: 1232588267498244, guid: 5e7adaf3d17dc4f46b46bb0e12f2da46,
+      type: 2}
+  - soundName: hit03
+    soundObject: {fileID: 1245399775372144, guid: 92a7b2f2dc7c0114d8b6980a8dbc4af8,
+      type: 2}
+  - soundName: hit04
+    soundObject: {fileID: 1594358829432496, guid: 10c8c31da69084b4f8ef23e7c1f2301a,
+      type: 2}
+  - soundName: hit05
+    soundObject: {fileID: 1224861796410320, guid: ade57d035b241f646b9ac0e0f906a989,
+      type: 2}
+  - soundName: nohit01
+    soundObject: {fileID: 1177947007954962, guid: b279c892441d8dd40952fe1b45dc8b0e,
+      type: 2}
+  - soundName: nohit02
+    soundObject: {fileID: 1493353049312868, guid: 9a24e4925dd0ff946bf699eae07d422b,
+      type: 2}
+  - soundName: laser01
+    soundObject: {fileID: 1733056488328354, guid: fa643bd7f25a7ce4c8a4d5191fbbc316,
+      type: 2}
+  - soundName: laser02
+    soundObject: {fileID: 1239215338790800, guid: aac56d37f3e90b342919c0ed499ec0be,
+      type: 2}
+  - soundName: laser03
+    soundObject: {fileID: 1980199022727088, guid: d3294fe9e3dd86843945197d1ecefeaa,
+      type: 2}
+  - soundName: laser04
+    soundObject: {fileID: 1025345570024580, guid: bd051629773b81846876dc54f07aba93,
+      type: 2}
+  - soundName: laser05
+    soundObject: {fileID: 1046075754103226, guid: b7ceb71d22676db409664ad2e77451c9,
+      type: 2}
+  - soundName: laser06
+    soundObject: {fileID: 1292658282835738, guid: be5400d2e9193534f91119b04f32f2cd,
+      type: 2}
+  - soundName: laser07
+    soundObject: {fileID: 1636360635371074, guid: 623beb6cc0c389044a452e2100a4519a,
+      type: 2}
+  - soundName: laser08
+    soundObject: {fileID: 1973856284909368, guid: 3cc5c5620030b47409faa1142bc4ca12,
+      type: 2}
+  - soundName: laser09
+    soundObject: {fileID: 1299573486871932, guid: e7807af67e459024f88d99cf330003d5,
+      type: 2}
+  - soundName: laser10
+    soundObject: {fileID: 1949518640452768, guid: d8677f36becce4d40978b7d1e37b54a1,
+      type: 2}
+  - soundName: laser_empty01
+    soundObject: {fileID: 1637067119417438, guid: d0737c92f42812a418bb06a29d682f22,
+      type: 2}
+  - soundName: laser_empty02
+    soundObject: {fileID: 1591797509282870, guid: 20ddec8b428681645920b8f84602b114,
+      type: 2}
+  - soundName: laser_empty03
+    soundObject: {fileID: 1410729263698686, guid: c9e8a3bee70cc7e4d960ca24550e6a45,
+      type: 2}
+  - soundName: laser_empty04
+    soundObject: {fileID: 1858103461611648, guid: 24387f7efc37cc44287b3d3e5e3bdf52,
+      type: 2}
+  - soundName: laser_empty05
+    soundObject: {fileID: 1102125660272160, guid: 2ae36cdeb0709d944b299246090608a9,
+      type: 2}
