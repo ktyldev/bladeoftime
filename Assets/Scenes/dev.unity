@@ -804,6 +804,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114667714819659784, guid: fe0372507f6c8354c9ea0e2591b5334e,
+        type: 2}
+      propertyPath: sounds.Array.size
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4975615344946970, guid: fe0372507f6c8354c9ea0e2591b5334e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -836,6 +841,50 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114667714819659784, guid: fe0372507f6c8354c9ea0e2591b5334e,
+        type: 2}
+      propertyPath: sounds.Array.data[5].soundName
+      value: hurt01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114667714819659784, guid: fe0372507f6c8354c9ea0e2591b5334e,
+        type: 2}
+      propertyPath: sounds.Array.data[5].soundObject
+      value: 
+      objectReference: {fileID: 1412999353171972, guid: ff8a862d7539b904ea3271778210c5c4,
+        type: 2}
+    - target: {fileID: 114667714819659784, guid: fe0372507f6c8354c9ea0e2591b5334e,
+        type: 2}
+      propertyPath: sounds.Array.data[6].soundName
+      value: hurt02
+      objectReference: {fileID: 0}
+    - target: {fileID: 114667714819659784, guid: fe0372507f6c8354c9ea0e2591b5334e,
+        type: 2}
+      propertyPath: sounds.Array.data[6].soundObject
+      value: 
+      objectReference: {fileID: 1423429089558488, guid: 37397cc5b5883ae4d96b5eb7ecdce4c0,
+        type: 2}
+    - target: {fileID: 114667714819659784, guid: fe0372507f6c8354c9ea0e2591b5334e,
+        type: 2}
+      propertyPath: sounds.Array.data[7].soundName
+      value: hurt03
+      objectReference: {fileID: 0}
+    - target: {fileID: 114667714819659784, guid: fe0372507f6c8354c9ea0e2591b5334e,
+        type: 2}
+      propertyPath: sounds.Array.data[7].soundObject
+      value: 
+      objectReference: {fileID: 1544634140379252, guid: ac61ab3b106861c489b9c5001838e739,
+        type: 2}
+    - target: {fileID: 114667714819659784, guid: fe0372507f6c8354c9ea0e2591b5334e,
+        type: 2}
+      propertyPath: sounds.Array.data[8].soundName
+      value: hurt04
+      objectReference: {fileID: 0}
+    - target: {fileID: 114667714819659784, guid: fe0372507f6c8354c9ea0e2591b5334e,
+        type: 2}
+      propertyPath: sounds.Array.data[8].soundObject
+      value: 
+      objectReference: {fileID: 1150845036356604, guid: 6879931c46400784f87a83a7cae50b17,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe0372507f6c8354c9ea0e2591b5334e, type: 2}
   m_IsPrefabParent: 0

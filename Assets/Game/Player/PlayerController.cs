@@ -74,6 +74,12 @@ public class PlayerController : MonoBehaviour
         {
             print("game over!");
         });
+
+        GetComponent<Health>().Hit.AddListener(() =>
+        {
+            int soundNum = Random.Range(1, 4);
+            _sfx.PlaySound(string.Format("hurt0{0}", soundNum));
+        });
         
         if (_input == null)
             throw new System.Exception();
