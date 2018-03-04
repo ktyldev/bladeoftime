@@ -26,7 +26,7 @@ public class PickupSpawner : Spawner {
     {
         while (true)
         {
-            yield return new WaitForSecondsRealtime(_spawnChanceDelay);
+            yield return new WaitForSeconds(_spawnChanceDelay * (2.5f - (WibblyWobbly.TimeSpeed)) * .6f);
             if (GameOver.IsEnded())
                 yield break;
 
