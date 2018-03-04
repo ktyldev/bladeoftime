@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
         int attackNumber = Random.Range(1, 6);
         string trigger = string.Format("melee0{0}", attackNumber);
-        _sfx.PlaySound(string.Format("attack0{0}", attackNumber));
+        _sfx.PlaySoundDelayed(string.Format("attack0{0}", attackNumber), .1f);
 
         anim.SetFloat("inputV", 0f);
         anim.SetTrigger(trigger);

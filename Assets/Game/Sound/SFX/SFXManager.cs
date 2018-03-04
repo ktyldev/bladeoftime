@@ -45,4 +45,15 @@ public class SFXManager : AudioManager
 
         PlaySound(sound.soundObject);
     }
+
+    public void PlaySoundDelayed(string soundName, float delay)
+    {
+        StartCoroutine(PlaySoundDelayedCoroutine(soundName, delay));
+    }
+
+    private IEnumerator PlaySoundDelayedCoroutine(string soundName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlaySound(soundName);
+    }
 }
