@@ -240,3 +240,6 @@ MonoBehaviour:
   - soundName: laser_empty05
     soundObject: {fileID: 1102125660272160, guid: 2ae36cdeb0709d944b299246090608a9,
       type: 2}
+  - soundName: death
+    soundObject: {fileID: 1521816422187582, guid: 6fd92165ed1dbc840abd1bd11bca1beb,
+      type: 2}

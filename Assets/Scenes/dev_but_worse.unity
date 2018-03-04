@@ -719,9 +719,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   templates:
   - {fileID: 1536696236413526, guid: c19925c2dd09c2a49b99cc9bb4d1c504, type: 2}
-  minDistanceFromPlayer: 20
-  _spawnDelayMax: 5
-  _spawnDelayMin: 0.5
+  minDistanceFromPlayer: 10
+  _spawnDelayMax: 2
+  _spawnDelayMin: 1
   _spawnDelayMultiplier: 0.95
 --- !u!1 &1139279285
 GameObject:
