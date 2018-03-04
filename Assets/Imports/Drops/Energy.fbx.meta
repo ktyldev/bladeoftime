@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 952b032e38999f949a874887a89e5c60
-timeCreated: 1520199297
+guid: de7c36d5846fb9c48a419e4ebe9323e8
+timeCreated: 1520199298
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Spline
-    100002: //RootNode
-    400000: Spline
-    400002: //RootNode
+    100000: //RootNode
+    100002: Spline
+    400000: //RootNode
+    400002: Spline
     2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Lathe_NURBS
+    4300000: Extrude_NURBS
     9500000: //RootNode
   externalObjects: {}
   materials:
