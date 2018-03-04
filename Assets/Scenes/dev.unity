@@ -839,6 +839,11 @@ Prefab:
       propertyPath: sensitivity
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 114559265637398410, guid: c03e4b2698d9efe4b8c081111a8f51ea,
+        type: 2}
+      propertyPath: _maxShakeMagnitude
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c03e4b2698d9efe4b8c081111a8f51ea, type: 2}
   m_IsPrefabParent: 0
@@ -1616,6 +1621,11 @@ Prefab:
         type: 2}
       propertyPath: _slowTimeAmount
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114595604021985780, guid: 66f4266c68fffdd47bf92819ce39cd1c,
+        type: 2}
+      propertyPath: _totalCharge
+      value: 420
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}

@@ -47,9 +47,11 @@ public class PlayerShoot : MonoBehaviour
     private float _currentCharge;
     private bool _isFiring;
     private float _initialLightIntensity;
+    private CameraController _camera;
     
     void Start()
     {
+        _camera = Camera.main.GetComponent<CameraController>();
         _sfx = this.Find<SFXManager>(GameTags.Sound);
         _currentCharge = _totalCharge;
         _input = GetComponentInChildren<IControlMode>();
@@ -128,6 +130,7 @@ public class PlayerShoot : MonoBehaviour
         _isFiring = true;
         while (_input.IsFiring)
         {
+            _camera.ShakeForSeconds(_shotDelay);
             if (_currentCharge < _shotChargeCost)
             {
                 _sfx.PlayRandomSound("laser_empty", 5);

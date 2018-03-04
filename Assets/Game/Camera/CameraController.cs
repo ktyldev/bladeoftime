@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class CameraController : MonoBehaviour {
     private float sensitivity = 0.3f;
     [SerializeField]
     private float zoomSensitivity;
+    [SerializeField]
+    private float _maxShakeMagnitude;
 
     private Vector3 velocity = Vector3.zero;
     private Vector3 _offset;
@@ -17,6 +20,7 @@ public class CameraController : MonoBehaviour {
     private Transform _trackedObject;
     private static CameraController Instance { get; set; }
     private Camera _cam;
+    private float _shakeTimeLeft;
 
     private float _targetFOV;
 
@@ -31,11 +35,54 @@ public class CameraController : MonoBehaviour {
         Instance = this;
     }
 
-    /*
-    void OnRenderImage (RenderTexture src, RenderTexture dest) {
-        Graphics.Blit(src, dest, postFXMaterial);
+    void Update()
+    {
+        if (_shakeTimeLeft > 0)
+        {
+            _shakeTimeLeft -= Time.deltaTime;
+        }
     }
-    */
+
+    void OnGUI()
+    {
+        if (_shakeTimeLeft > 0)
+        {
+            StartCoroutine(Shake());
+        }
+    }
+
+    public void ShakeForSeconds(float seconds)
+    {
+        _shakeTimeLeft = seconds;
+    }
+
+    private IEnumerator Shake()
+    {
+        Func<Vector3> originalPos = () => _trackedObject.transform.position + _offset;
+
+        var elapsed = 0f;
+
+        var duration = .1f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            var returnPos = originalPos();
+
+            var shakeValue = _maxShakeMagnitude;
+
+            var x = returnPos.x + (shakeValue * (UnityEngine.Random.value - 0.5f));
+            var z = returnPos.z + (shakeValue * (UnityEngine.Random.value - 0.5f));
+
+            transform.position = new Vector3(x, returnPos.y, z);
+
+            yield return null;
+        }
+
+        transform.position = originalPos();
+    }
+
 
     void LateUpdate() {
         if (_trackedObject == null)
