@@ -1158,6 +1158,12 @@ Prefab:
       propertyPath: _staggerTime
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 114115386911552272, guid: 66f4266c68fffdd47bf92819ce39cd1c,
+        type: 2}
+      propertyPath: _controlMode
+      value: 
+      objectReference: {fileID: 1066433689135578, guid: d1ee6912c285c0740a3ff29a6d60ca40,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
   m_IsPrefabParent: 0
