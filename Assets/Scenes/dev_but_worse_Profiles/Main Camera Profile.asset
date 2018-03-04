@@ -144,10 +144,10 @@ MonoBehaviour:
     value: 5
   saturation:
     overrideState: 1
-    value: 41.1
+    value: 49.9
   brightness:
     overrideState: 1
-    value: 0
+    value: 67
   postExposure:
     overrideState: 1
     value: 0
@@ -159,16 +159,16 @@ MonoBehaviour:
     value: 100
   mixerRedOutGreenIn:
     overrideState: 1
-    value: 0
+    value: -3
   mixerRedOutBlueIn:
     overrideState: 1
-    value: 0
+    value: -7
   mixerGreenOutRedIn:
     overrideState: 1
     value: 0
   mixerGreenOutGreenIn:
     overrideState: 1
-    value: 100
+    value: 84
   mixerGreenOutBlueIn:
     overrideState: 1
     value: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
     value: 0
   mixerBlueOutBlueIn:
     overrideState: 1
-    value: 100
+    value: 88
   lift:
     overrideState: 1
     value: {x: 1, y: 0.94903606, z: 0.9460071, w: 0}
