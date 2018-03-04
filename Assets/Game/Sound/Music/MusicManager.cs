@@ -107,4 +107,10 @@ public class MusicManager : AudioManager {
     {
         Instance.Filter = value;
     }
+
+    public static void FadeOut()
+    {
+        Instance._targetFreq = 0f;
+        Instance._targetPitch = 0f;
+    }
 }

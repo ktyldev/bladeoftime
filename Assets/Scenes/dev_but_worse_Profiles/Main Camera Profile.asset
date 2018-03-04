@@ -144,10 +144,10 @@ MonoBehaviour:
     value: 5
   saturation:
     overrideState: 1
-    value: 49.9
+    value: 68.4
   brightness:
     overrideState: 1
-    value: 67
+    value: 65.2
   postExposure:
     overrideState: 1
     value: 0

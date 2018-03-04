@@ -24,10 +24,8 @@ public class GameOver : MonoBehaviour
 
     private void Update()
     {
-        if (_canReload) {
-            if (_input.AnyButtonPressed)
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        if (_canReload && _input.AnyButtonPressed)
+            StartCoroutine(ReloadGameCoroutine());
     }
 
     private void EndGame()
@@ -47,5 +45,12 @@ public class GameOver : MonoBehaviour
         PostFXHandler.DesaturateFade();
         yield return new WaitForSecondsRealtime(1.5f);
         _canReload = true;
+    }
+
+    private IEnumerator ReloadGameCoroutine()
+    {
+        MusicManager.FadeOut();
+        yield return new WaitForSecondsRealtime(.7f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -44,4 +44,18 @@ public class PostFXHandler : MonoBehaviour
     {
         Instance._fade = true;
     }
+
+    void FadeToBlack()
+    {
+        StartCoroutine(FadeToBlackCoroutine());
+    }
+
+    private IEnumerator FadeToBlackCoroutine()
+    {
+        while (_grading.brightness.value > 0f)
+        {
+            _grading.brightness.Override(_grading.brightness.value - .1f);
+            yield return new WaitForFixedUpdate();
+        }
+    }
 }
