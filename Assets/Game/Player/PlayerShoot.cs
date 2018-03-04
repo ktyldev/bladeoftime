@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Extensions;
+using System.Linq;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -27,6 +28,12 @@ public class PlayerShoot : MonoBehaviour
     private float _chargeSpeed;
     [SerializeField]
     private float _shotDelay;
+    [SerializeField]
+    private GameObject[] _lights;
+    [SerializeField]
+    private float _maxLightIntensity;
+    [SerializeField]
+    private float _lightUpSpeed;
     
     public bool IsAttacking { get; private set; }
     public float CooldownPercent { get { return _currentCharge / _totalCharge; } }
@@ -39,6 +46,7 @@ public class PlayerShoot : MonoBehaviour
     private bool _onCooldown;
     private float _currentCharge;
     private bool _isFiring;
+    private float _initialLightIntensity;
     
     void Start()
     {
@@ -48,6 +56,11 @@ public class PlayerShoot : MonoBehaviour
         _line = _lineRenderer.GetComponent<LineRenderer>();
         if (_line == null || _input == null)
             throw new Exception();
+
+        var lights = _lights.Select(go => go.GetComponent<Light>());
+        _initialLightIntensity = lights.First().intensity;
+
+        StartCoroutine(FadeLights());
     }
 
     void Update()
@@ -77,6 +90,28 @@ public class PlayerShoot : MonoBehaviour
         if (_currentCharge < _totalCharge)
         {
             _currentCharge += WibblyWobbly.deltaTime * _chargeSpeed;
+        }
+    }
+
+    private IEnumerator FadeLights()
+    {
+        var start = Time.time;
+        var lights = _lights.Select(go => go.GetComponent<Light>());
+
+        while (true)
+        {
+            foreach (var light in lights)
+            {
+                if (_input.IsAiming)
+                {
+                    light.intensity = Mathf.Lerp(light.intensity, _maxLightIntensity, _lightUpSpeed);
+                }
+                else
+                {
+                    light.intensity = Mathf.Lerp(light.intensity, _initialLightIntensity, _lightUpSpeed);
+                }
+            }
+            yield return new WaitForEndOfFrame();
         }
     }
 

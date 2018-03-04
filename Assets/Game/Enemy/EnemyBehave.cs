@@ -44,12 +44,14 @@ public class EnemyBehave : MonoBehaviour {
 
         StartCoroutine(FadeLights(false));
 
-        GetComponent<Health>().Death.AddListener(() =>
-        {
-            _ded = true;
-            StartCoroutine(FadeLights(true));
-        });
+        GetComponent<Health>().Death.AddListener(Die);
 	}
+
+    public void Die()
+    {
+        _ded = true;
+        StartCoroutine(FadeLights(true));
+    }
 
     private IEnumerator FadeLights(bool turnOn)
     {
