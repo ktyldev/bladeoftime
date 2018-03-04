@@ -9,7 +9,7 @@ public abstract class Spawner : MonoBehaviour
 {
     public GameObject[] templates;
     public float minDistanceFromPlayer;
-
+    
     protected abstract bool CanSpawn(GameObject template);
 
     protected virtual GameObject Spawn()

@@ -14,6 +14,8 @@ public class EnemySpawner : Spawner
     [SerializeField]
     [Range(0.95f, 1f)]
     private float _spawnDelayMultiplier = .95f;
+    [SerializeField]
+    private float _spawnRate;
 
     private float _spawnDelay;
     protected override bool CanSpawn(GameObject template)
@@ -39,7 +41,7 @@ public class EnemySpawner : Spawner
     {
         while(true)
         {
-            yield return new WaitForSeconds(_spawnDelay * (2.5f - (WibblyWobbly.TimeSpeed)) * .6f);
+            yield return new WaitForSeconds(_spawnDelay * WibblyWobbly.TimeSpeed);
             if (GameOver.IsEnded())
                 yield break;
             Spawn();
