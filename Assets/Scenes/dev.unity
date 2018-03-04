@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.697, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.951, g: 0.278, b: 0.501, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -975,6 +975,11 @@ Prefab:
     - target: {fileID: 4627734611682038, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
       propertyPath: m_LocalRotation.w
       value: 0.06080672
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493355240138518, guid: 66f4266c68fffdd47bf92819ce39cd1c,
+        type: 2}
+      propertyPath: _initialValue
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
