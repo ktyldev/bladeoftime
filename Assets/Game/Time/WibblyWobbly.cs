@@ -6,7 +6,7 @@ public class WibblyWobbly : MonoBehaviour
 {
     // Time speed
     [SerializeField]
-    private float _minTime; 
+    private float _minTime;
     [SerializeField]
     private float _maxTime;
     [SerializeField]
@@ -21,13 +21,21 @@ public class WibblyWobbly : MonoBehaviour
     [Range(0.01f, 0.1f)]
     private float _gameOverLerp = 0.03f;
 
-    public static float deltaTime { get {
+    public static float deltaTime
+    {
+        get
+        {
             return Instance.DeltaTime;
-        } }
+        }
+    }
 
-    public static float TimeSpeed { get {
+    public static float TimeSpeed
+    {
+        get
+        {
             return Instance._timeSpeed;
-        } }
+        }
+    }
 
     private static WibblyWobbly Instance { get; set; }
 

@@ -16,6 +16,6 @@ public class TimeSpeed : MonoBehaviour
 
     void OnGUI()
     {
-        _text.text = WibblyWobbly.TimeSpeed.ToString();
+        _text.text = WibblyWobbly.TimeSpeed.ToString("F2");
     }
 }

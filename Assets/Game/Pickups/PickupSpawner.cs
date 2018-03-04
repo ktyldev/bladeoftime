@@ -17,7 +17,7 @@ public class PickupSpawner : Spawner {
         return true;
     }
 
-    private void Awake()
+    private void Start()
     {
         StartCoroutine(SpawnRoutine());
     }
