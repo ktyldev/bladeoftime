@@ -9,17 +9,17 @@ public class GunCooldownBar : MonoBehaviour
     [SerializeField]
     private Image _image;
 
-    private PlayerController _player;
+    private PlayerShoot _weapon;
 
     // Use this for initialization
     void Start()
     {
-        _player = this.Find<PlayerController>(GameTags.Player); 
+        _weapon = this.Find<PlayerShoot>(GameTags.Player); 
     }
 
     // Update is called once per frame
     void OnGUI()
     {
-        _image.fillAmount = _player.CooldownPercent;
+        _image.fillAmount = _weapon.CooldownPercent;
     }
 }

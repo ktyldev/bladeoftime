@@ -5,10 +5,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using Extensions;
 
-[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(Health), typeof(PlayerShoot))]
 public class PlayerController : MonoBehaviour
 {
-    public Animator anim;
+    [SerializeField]
+    private Animator _anim;
     [SerializeField]
     private GameObject _controlMode;
     [SerializeField]
@@ -41,16 +42,14 @@ public class PlayerController : MonoBehaviour
 
     // I want to be sick
     private RotationZeroer _zeroer;
-
-    public float CooldownPercent { get; private set; }
-
+    
     private IControlMode _input;
     private Vector3 _momentum;
     private SFXManager _sfx;
+    private PlayerShoot _gun;
 
     private bool _isDashing = false;
     private bool _isAttacking;
-    private bool _gunOnCooldown;
 
     private bool _isBusy { get { return (_isAttacking || _isDashing); } }
 
@@ -62,9 +61,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        CooldownPercent = 1;
-
         _sfx = this.Find<SFXManager>(GameTags.Sound);
+        _gun = GetComponent<PlayerShoot>();
 
         _zeroer = GetComponentInChildren<RotationZeroer>();
         if (_zeroer == null)
@@ -110,10 +108,10 @@ public class PlayerController : MonoBehaviour
         else
         {
             dir = _input.MoveDirection;
-            if (_isAttacking)
+            if (_isAttacking || _input.IsAiming)
             {
                 speed = 0;
-                anim.SetFloat("inputV", 0f);
+                _anim.SetFloat("inputV", 0f);
             }
             else
             {
@@ -124,7 +122,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 speed = _moveSpeed;
-                anim.SetFloat("inputV", dir != Vector3.zero ? _momentum.magnitude * _moveSpeed : 0);
+                _anim.SetFloat("inputV", dir != Vector3.zero ? _momentum.magnitude * _moveSpeed : 0);
             }
         }
         _momentum = Vector3.Lerp(_momentum, dir, _moveSensitivity);
@@ -135,13 +133,14 @@ public class PlayerController : MonoBehaviour
     {
         if (_isDashing)
             return;
+
         bool isStill = _input.MoveDirection == Vector3.zero;
-        var targetDirection = isStill ? _input.AimDirection : _input.MoveDirection;
+        var targetDirection = isStill || _input.IsAiming ? _input.AimDirection : _input.MoveDirection;
 
         if (targetDirection == Vector3.zero)
             return;
-        var targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
         
+        var targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _rotateSensitivity);
     }
 
@@ -161,23 +160,23 @@ public class PlayerController : MonoBehaviour
 
         _sfx.PlayRandomSoundDelayed("attack", 5, .1f);
 
-        anim.SetFloat("inputV", 0f);
-        anim.SetTrigger(trigger);
+        _anim.SetFloat("inputV", 0f);
+        _anim.SetTrigger(trigger);
+
         StartCoroutine(MeleeAttack());
     }
 
     private void Fire()
     {
-        if (_isBusy || _gunOnCooldown)
+        if (_isBusy)
             return;
 
-        StartCoroutine(FireAttack());
+        _gun.Fire();
     }
     
     private IEnumerator MeleeAttack()
     {
         _isAttacking = true;
-        print("melee!");
         Aim(_input.AimDirection);
         float _movementOffset = (_momentum == Vector3.zero) ? 0.15f : 0f;
 
@@ -223,43 +222,6 @@ public class PlayerController : MonoBehaviour
         ));
         _isAttacking = false;
     }
-
-    private IEnumerator FireAttack()
-    {
-        _isAttacking = true;
-        print("fire!");
-        Aim(_input.AimDirection);
-
-        var ray = new Ray(transform.position + Vector3.up, transform.forward);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, _shootDistance))
-        {
-            var enemy = hit.collider.gameObject;
-            var enemyHealth = enemy.GetComponent<Health>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.DoDamage(1);
-            }
-        }
-        
-        yield return new WaitForSeconds(_attackTime);
-        _isAttacking = false;
-
-        _gunOnCooldown = true;
-        var cooldownTime = _baseGunCooldown * Mathf.Pow(1 / WibblyWobbly.TimeSpeed, 2);
-
-        var cooldownStart = Time.time;
-        var elapsedTime = 0f;
-        while (Time.time - cooldownStart < cooldownTime)
-        {
-            elapsedTime += Time.deltaTime;
-            CooldownPercent = elapsedTime / cooldownTime;
-            yield return new WaitForEndOfFrame();
-        }
-
-        yield return new WaitForSeconds(cooldownTime);
-        _gunOnCooldown = false;
-    }
     
     private void Dash()
     {
@@ -273,7 +235,7 @@ public class PlayerController : MonoBehaviour
     {
         _isDashing = true;
         var start = Time.time;
-        anim.SetTrigger("dash");
+        _anim.SetTrigger("dash");
 
         yield return new WaitForSeconds(duration);
 
