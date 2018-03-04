@@ -6,19 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
+    private static GameOver Instance { set; get; }
+    bool _gameOver = false;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         this.Find<Health>(GameTags.Player).Death.AddListener(EndGame);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void EndGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _gameOver = true;
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
+    public static bool IsEnded()
+    {
+        return Instance._gameOver;
     }
 }

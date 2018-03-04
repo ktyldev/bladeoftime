@@ -50,8 +50,9 @@ public class PlayerController : MonoBehaviour
     private PlayerMelee _melee;
 
     private bool _isDashing = false;
+    private bool _hasCooldown = false;
 
-    private bool _isBusy { get { return (_melee.IsAttacking || _isDashing); } }
+    private bool _isBusy { get { return (_melee.IsAttacking || _isDashing || _hasCooldown); } }
 
     private void Awake()
     {
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<Health>().Death.AddListener(() =>
         {
             print("game over!");
+            _anim.SetTrigger("deathAnimation");
         });
 
         GetComponent<Health>().Hit.AddListener(() =>
@@ -90,10 +92,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (GameOver.IsEnded())
+            return;
+
         Move();
 
         if (_isBusy)
             return;
+
         Aim();
     }
 

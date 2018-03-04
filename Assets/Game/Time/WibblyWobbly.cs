@@ -12,8 +12,13 @@ public class WibblyWobbly : MonoBehaviour
     [SerializeField]
     private float _timeIncreaseRate;
 
-    public static float deltaTime { get { return Instance.DeltaTime; } }
-    public static float TimeSpeed { get { return Instance._timeSpeed; } }
+    public static float deltaTime { get {
+            return Instance.DeltaTime;
+        } }
+
+    public static float TimeSpeed { get {
+            return Instance._timeSpeed;
+        } }
 
     private static WibblyWobbly Instance { get; set; }
 
@@ -28,22 +33,33 @@ public class WibblyWobbly : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
-    {
-    }
-
     void Update()
     {
-        _timeSpeed = Mathf.Clamp(_timeSpeed + _timeIncreaseRate * Time.deltaTime, _minTime, _maxTime);
+        if (GameOver.IsEnded())
+        {
+            _timeSpeed = Mathf.Lerp(_timeSpeed, Mathf.Max(_timeSpeed - .5f, 0f), 0.02f);
+            if (_timeSpeed < 0.001f)
+                _timeSpeed = 0f;
+        }
+        else
+        {
+            _timeSpeed = Mathf.Clamp(_timeSpeed + _timeIncreaseRate * Time.deltaTime, _minTime, _maxTime);
+        }
     }
 
     protected void _slowTime(float amount)
     {
+        if (GameOver.IsEnded())
+            return;
+
         _timeSpeed = Mathf.Clamp(_timeSpeed - amount, _minTime, _maxTime);
     }
 
     public static void SlowTime(float amount)
     {
+        if (GameOver.IsEnded())
+            return;
+
         Instance._slowTime(amount);
     }
 }

@@ -830,8 +830,8 @@ MonoBehaviour:
   templates:
   - {fileID: 1536696236413526, guid: c19925c2dd09c2a49b99cc9bb4d1c504, type: 2}
   minDistanceFromPlayer: 20
-  _spawnDelayMax: 5
-  _spawnDelayMin: 0.5
+  _spawnDelayMax: 2
+  _spawnDelayMin: 1
   _spawnDelayMultiplier: 0.95
 --- !u!1001 &1002339231
 Prefab:
@@ -871,74 +871,6 @@ Prefab:
     - target: {fileID: 4546484650199812, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4627734611682038, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0.093746535
-      objectReference: {fileID: 0}
-    - target: {fileID: 4627734611682038, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.6978551
-      objectReference: {fileID: 0}
-    - target: {fileID: 4627734611682038, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0.707469
-      objectReference: {fileID: 0}
-    - target: {fileID: 4627734611682038, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.060806744
-      objectReference: {fileID: 0}
-    - target: {fileID: 114115386911552272, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: _anim
-      value: 
-      objectReference: {fileID: 1721964455}
-    - target: {fileID: 114595604021985780, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: _lineHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114595604021985780, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: _shootDistance
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 114595604021985780, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: _cooldownTime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114595604021985780, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: _projectile
-      value: 
-      objectReference: {fileID: 1681999096615736, guid: f1a5873d8ff5a15418c4378477fdeb78,
-        type: 2}
-    - target: {fileID: 114595604021985780, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: _shotChargeCost
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114595604021985780, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: _totalCharge
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114595604021985780, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: _chargeSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114115386911552272, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: _controlMode
-      value: 
-      objectReference: {fileID: 1260726928104906, guid: 984cba2c0d6083c48bfdac4275320e20,
-        type: 2}
-    - target: {fileID: 114115386911552272, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-        type: 2}
-      propertyPath: _rotateSensitivity
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
@@ -1245,11 +1177,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1721964455 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95212207097851730, guid: 66f4266c68fffdd47bf92819ce39cd1c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1002339231}
 --- !u!1 &1759553219
 GameObject:
   m_ObjectHideFlags: 0
