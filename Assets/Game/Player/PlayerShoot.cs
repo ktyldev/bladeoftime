@@ -109,4 +109,14 @@ public class PlayerShoot : MonoBehaviour
         }
         _isFiring = false;
     }
+
+    public void Reload()
+    {
+        _currentCharge = _totalCharge;
+    }
+
+    public bool IsCharged ()
+    {
+        return _currentCharge >= _totalCharge;
+    }
 }

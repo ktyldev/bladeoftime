@@ -17,4 +17,10 @@ public abstract class Pickup : MonoBehaviour
         DoPickup();
         Destroy(this.gameObject);
     }
+
+    private void Update()
+    {
+        Vector3 _rot = this.transform.eulerAngles;
+        this.transform.rotation = Quaternion.Euler(new Vector3(0f, _rot.y + .1f, 0f));
+    }
 }
