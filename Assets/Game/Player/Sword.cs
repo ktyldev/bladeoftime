@@ -5,19 +5,20 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
-    private PlayerMelee _melee;
-    private SFXManager _sfx;
-    private bool _isSwinging;
     [SerializeField]
     private GameObject _trail;
-
     [SerializeField]
     [Range(0f, 1f)]
     private float _startDamage;
-
     [SerializeField]
     [Range(0f, 1f)]
     private float _endDamage;
+    [SerializeField]
+    private float _slowTimeAmount;
+
+    private PlayerMelee _melee;
+    private SFXManager _sfx;
+    private bool _isSwinging;
 
     public bool Trail
     {
@@ -70,5 +71,6 @@ public class Sword : MonoBehaviour
 
         _sfx.PlayRandomSound("hit", 5);
         health.DoDamage();
+        WibblyWobbly.SlowTime(_slowTimeAmount);
     }
 }

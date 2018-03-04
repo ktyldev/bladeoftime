@@ -39,12 +39,7 @@ public class EnemyBehave : MonoBehaviour {
             StartCoroutine(Attack());
         }
     }
-
-    void OnDestroy()
-    {
-        WibblyWobbly.SlowTime(_slowTimeAmount);
-    }
-
+    
     private IEnumerator Attack()
     {
         _canAttack = false;
