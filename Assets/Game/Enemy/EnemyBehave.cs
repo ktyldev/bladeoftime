@@ -16,10 +16,13 @@ public class EnemyBehave : MonoBehaviour {
 
     private Transform _player;
     private bool _canAttack = true;
+    private Rigidbody _physics;
 
     // Use this for initialization
     void Start () {
         _player = this.Find(GameTags.Player).transform;
+        _physics = GetComponent<Rigidbody>();
+
         GetComponent<Health>().Death.AddListener(() =>
         {
             Destroy(gameObject);
@@ -29,7 +32,7 @@ public class EnemyBehave : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.LookAt(_player);
-        transform.Translate(Vector3.forward * _speed * WibblyWobbly.deltaTime);
+        _physics.velocity = transform.forward * _speed * 2f *  WibblyWobbly.TimeSpeed;
 
         if (Vector3.Distance(transform.position, _player.position) < _attackDistance && _canAttack)
         {
@@ -49,6 +52,5 @@ public class EnemyBehave : MonoBehaviour {
         health.DoDamage(1);
         yield return new WaitForSeconds(_attackCooldown);
         _canAttack = true;
-
     }
 }
