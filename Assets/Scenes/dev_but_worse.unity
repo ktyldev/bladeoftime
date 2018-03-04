@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.5698238, g: 0.4202679, b: 0.39836872, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -379,11 +379,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114661331896441040, guid: 490ce2441506ecb47a9985488945cc54,
-        type: 2}
-      propertyPath: music.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4997807400975460, guid: 490ce2441506ecb47a9985488945cc54, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -416,30 +411,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114661331896441040, guid: 490ce2441506ecb47a9985488945cc54,
-        type: 2}
-      propertyPath: music.Array.data[0].intro
-      value: 
-      objectReference: {fileID: 1443402558065372, guid: 1f6020c8a4ce6cf4b9f03cd4629e5fc8,
-        type: 2}
-    - target: {fileID: 114661331896441040, guid: 490ce2441506ecb47a9985488945cc54,
-        type: 2}
-      propertyPath: music.Array.data[0].loop
-      value: 
-      objectReference: {fileID: 1223388399636184, guid: 1b8ef8c5f65b6bc4ab8b89e7c9a9ebef,
-        type: 2}
-    - target: {fileID: 114661331896441040, guid: 490ce2441506ecb47a9985488945cc54,
-        type: 2}
-      propertyPath: music.Array.data[1].intro
-      value: 
-      objectReference: {fileID: 1928019399812940, guid: 201bc1bb52c934b4bb1e1be35557f000,
-        type: 2}
-    - target: {fileID: 114661331896441040, guid: 490ce2441506ecb47a9985488945cc54,
-        type: 2}
-      propertyPath: music.Array.data[1].loop
-      value: 
-      objectReference: {fileID: 1037960536192878, guid: ff0ce003063583642b8b02bd8b5f815f,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 490ce2441506ecb47a9985488945cc54, type: 2}
   m_IsPrefabParent: 0
@@ -1334,7 +1305,7 @@ Prefab:
     - target: {fileID: 114493355240138518, guid: 66f4266c68fffdd47bf92819ce39cd1c,
         type: 2}
       propertyPath: _maxValue
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
