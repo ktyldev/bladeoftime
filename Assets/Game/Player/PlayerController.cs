@@ -26,10 +26,6 @@ public class PlayerController : MonoBehaviour
     private float _rotateSensitivity;
 
     [SerializeField]
-    private float _meleeDistance;
-    [SerializeField]
-    private float _meleeConeAngle;
-    [SerializeField]
     private float _attackTime;
     [SerializeField]
     [Range(0, 1)]

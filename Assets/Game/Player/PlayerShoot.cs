@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Extensions;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class PlayerShoot : MonoBehaviour
     public float CooldownPercent { get { return _currentCharge / _totalCharge; } }
 
     private LineRenderer _line;
+    private SFXManager _sfx;
     private IControlMode _input;
     private bool _active;
     private bool _onCooldown;
@@ -34,6 +36,7 @@ public class PlayerShoot : MonoBehaviour
     
     void Start()
     {
+        _sfx = this.Find<SFXManager>(GameTags.Sound);
         _currentCharge = _totalCharge;
         _input = GetComponentInChildren<IControlMode>();
         _line = _lineRenderer.GetComponent<LineRenderer>();
@@ -74,7 +77,8 @@ public class PlayerShoot : MonoBehaviour
         if (_currentCharge < _shotChargeCost)
             return;
 
-        
+        _sfx.PlayRandomSound("laser", 10);
+
         Instantiate(_projectile, transform.position + Vector3.up * _projectileSpawnHeight, transform.rotation);
         _currentCharge -= _shotChargeCost;
     }
