@@ -22,8 +22,7 @@ public class EnemyBehave : MonoBehaviour {
         _player = this.Find(GameTags.Player).transform;
         GetComponent<Health>().Death.AddListener(() =>
         {
-            print("enemy killed!");
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         });
 	}
 	
