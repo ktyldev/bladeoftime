@@ -11,9 +11,18 @@ public class PlayerMelee : MonoBehaviour
     [SerializeField]
     private float _attackTime;
 
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float _startDamage = .2f;
+
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float _endDamage = .8f;
+
     private SFXManager _sfx;
 
     public bool IsAttacking { get; private set; }
+    public bool IsDamaging { get; private set; }
 
     void Start()
     {
@@ -39,7 +48,11 @@ public class PlayerMelee : MonoBehaviour
     private IEnumerator MeleeAttack()
     {
         IsAttacking = true;
-        yield return new WaitForSecondsRealtime(_attackTime);
+        yield return new WaitForSecondsRealtime(_attackTime * _startDamage);
+        IsDamaging = true;
+        yield return new WaitForSecondsRealtime(_attackTime * (_endDamage - _startDamage));
+        IsDamaging = false;
+        yield return new WaitForSecondsRealtime(_attackTime * (1 - _endDamage));
         IsAttacking = false;
 
         _anim.SetBool("isAttacking", false);

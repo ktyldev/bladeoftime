@@ -11,6 +11,14 @@ public class Sword : MonoBehaviour
     [SerializeField]
     private GameObject _trail;
 
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float _startDamage;
+
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float _endDamage;
+
     public bool Trail
     {
         set
@@ -49,7 +57,7 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!_melee.IsAttacking)
+        if (!_melee.IsDamaging)
             return;
         
         var enemy = other.gameObject.GetComponent<EnemyBehave>();

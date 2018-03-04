@@ -5909,6 +5909,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _anim: {fileID: 95212207097851730}
   _attackTime: 1.5
+  _startDamage: 0.25
+  _endDamage: 0.75
 --- !u!114 &114846600743602474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5933,6 +5935,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trail: {fileID: 1357504379579440}
+  _startDamage: 0
+  _endDamage: 0
 --- !u!120 &120392083293452440
 LineRenderer:
   m_ObjectHideFlags: 1
