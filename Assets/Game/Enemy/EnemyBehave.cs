@@ -11,8 +11,6 @@ public class EnemyBehave : MonoBehaviour {
     private float _screamDistance;
     [SerializeField]
     private float _attackCooldown;
-    [SerializeField]
-    private float _slowTimeAmount;
 
     private Transform _player;
     private bool _canAttack = true;
