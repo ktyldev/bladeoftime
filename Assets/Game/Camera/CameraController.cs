@@ -14,12 +14,13 @@ public class CameraController : MonoBehaviour {
     private float _maxShakeMagnitude;
 
     private Vector3 velocity = Vector3.zero;
-    private Vector3 _offset;
+    private Vector3 _dampOffset;
     //public Material postFXMaterial;
 
     private Transform _trackedObject;
     private static CameraController Instance { get; set; }
     private Camera _cam;
+    private Vector3 _targetPosition;
     private float _shakeTimeLeft;
 
     private float _targetFOV;
@@ -27,7 +28,7 @@ public class CameraController : MonoBehaviour {
     void Start() {
         var player = GameObject.FindGameObjectWithTag(GameTags.Player);
         _trackedObject = player.transform;
-        _offset = transform.position - _trackedObject.transform.position;
+        _dampOffset = transform.position - _trackedObject.transform.position;
 
         _cam = GetComponent<Camera>();
         _targetFOV = _cam.fieldOfView;
@@ -58,8 +59,6 @@ public class CameraController : MonoBehaviour {
 
     private IEnumerator Shake()
     {
-        Func<Vector3> originalPos = () => _trackedObject.transform.position + _offset;
-
         var elapsed = 0f;
 
         var duration = .1f;
@@ -68,28 +67,30 @@ public class CameraController : MonoBehaviour {
         {
             elapsed += Time.deltaTime;
 
-            var returnPos = originalPos();
-
             var shakeValue = _maxShakeMagnitude;
 
-            var x = returnPos.x + (shakeValue * (UnityEngine.Random.value - 0.5f));
-            var z = returnPos.z + (shakeValue * (UnityEngine.Random.value - 0.5f));
+            var _shakeOffset = new Vector3(
+                shakeValue * (UnityEngine.Random.value - 0.5f), 
+                0, 
+                shakeValue * (UnityEngine.Random.value - 0.5f));
+            
+            transform.position = _targetPosition + _shakeOffset;
 
-            transform.position = new Vector3(x, returnPos.y, z);
-
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
-
-        transform.position = originalPos();
     }
-
 
     void LateUpdate() {
         if (_trackedObject == null)
             return;
 
-        var targetPosition = _trackedObject.transform.position + _offset;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, sensitivity);
+        _targetPosition = Vector3.SmoothDamp(
+            transform.position,
+            _trackedObject.transform.position + _dampOffset,
+            ref velocity,
+            sensitivity);
+
+        transform.position = _targetPosition;
 
         _cam.fieldOfView = Mathf.Lerp(_cam.fieldOfView, _targetFOV, 0.02f);
     }
