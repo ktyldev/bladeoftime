@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     private float _shootDistance;
     [SerializeField]
     private float _baseGunCooldown; // This is affected by wibbly wobbly time
+    [SerializeField]
+    private float _staggerTime;
 
     // I want to be sick
     private RotationZeroer _zeroer;
@@ -53,8 +55,9 @@ public class PlayerController : MonoBehaviour
 
     private bool _isDashing = false;
     private bool _hasCooldown = false;
+    private bool _isStaggered = false;
 
-    private bool _isBusy { get { return (_melee.IsAttacking || _isDashing || _hasCooldown); } }
+    private bool _isBusy { get { return (_melee.IsAttacking || _isDashing || _hasCooldown || _isStaggered); } }
     public IControlMode Input {
         get { return _input; }
     }
@@ -92,8 +95,8 @@ public class PlayerController : MonoBehaviour
         GetComponent<Health>().Hit.AddListener(() =>
         {
             _sfx.PlayRandomSound("hurt", 4);
-            _anim.SetFloat("inputV", 0f);
-            StartCoroutine(DoDamagedHit());
+            
+            StartCoroutine(Stagger());
         });
 
         if (_input == null)
@@ -102,6 +105,18 @@ public class PlayerController : MonoBehaviour
         _input.Melee.AddListener(Melee);
         _input.Fire.AddListener(Fire);
         _input.Dash.AddListener(Dash);
+    }
+
+    private IEnumerator Stagger()
+    {
+        _anim.SetFloat("inputV", 0f);
+        _anim.SetTrigger("basicHit");
+
+        _isStaggered = true;
+
+        CameraController.Pulse();
+        yield return new WaitForSeconds(_staggerTime);
+        _isStaggered = false;
     }
 
     void Update()
@@ -128,7 +143,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             dir = _input.MoveDirection;
-            if (_melee.IsAttacking || _input.IsAiming)
+            if (_melee.IsAttacking || _input.IsAiming || _isStaggered)
             {
                 _currentMoveSpeed = Mathf.Lerp(_currentMoveSpeed, 0, _deceleration);
             }
@@ -217,11 +232,5 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(.8f);
         CameraController.ZoomMultiply(.6f);
-    }
-
-    IEnumerator DoDamagedHit()
-    {
-        yield return new WaitForSeconds(.1f);
-        CameraController.Pulse();
     }
 }
