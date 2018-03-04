@@ -16,6 +16,9 @@ public class Health : MonoBehaviour
 
     public void DoDamage(int damage)
     {
+        if (Value <= 0)
+            return;
+
         Value -= damage;
         Hit.Invoke();
 
