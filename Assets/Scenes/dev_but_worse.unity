@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minTime: 0.1
   _maxTime: 2
-  _timeIncreaseRate: 0.02
+  _timeIncreaseRate: 0.1
   _startTimeRate: 0.1
   _gameOverReduction: 0.5
   _gameOverLerp: 0.03

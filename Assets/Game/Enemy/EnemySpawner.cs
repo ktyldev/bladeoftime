@@ -39,7 +39,9 @@ public class EnemySpawner : Spawner
     {
         while(true)
         {
-            yield return new WaitForSeconds(_spawnDelay * WibblyWobbly.TimeSpeed);
+            yield return new WaitForSeconds(_spawnDelay * (2.5f - (WibblyWobbly.TimeSpeed)) * .6f);
+            if (GameOver.IsEnded())
+                yield break;
             Spawn();
             _spawnDelay = Mathf.Clamp(
                 _spawnDelay * _spawnDelayMultiplier,
