@@ -36,7 +36,6 @@ public class PlayerShoot : MonoBehaviour
     private bool _active;
     private bool _onCooldown;
     private float _currentCharge;
-    private bool _isFiring;
     
     void Start()
     {
@@ -77,27 +76,14 @@ public class PlayerShoot : MonoBehaviour
 
     public void Fire()
     {
-        if (_isFiring)
+        if (_input.IsFiring)
             return;
-
-        // TODO: Empty gun click
-        //if (_currentCharge < _shotChargeCost)
-        //{
-        //    _sfx.PlayRandomSound("laser_empty", 5);
-        //    return;
-        //}
-
-        //_sfx.PlayRandomSound("laser", 10);
-
-        //Instantiate(_projectile, transform.position + Vector3.up * _projectileSpawnHeight, transform.rotation);
-        //_currentCharge -= _shotChargeCost;
-
+        
         StartCoroutine(ContinuousFire());
     }
 
     private IEnumerator ContinuousFire()
     {
-        _isFiring = true;
         while (_input.IsFiring)
         {
             if (_currentCharge < _shotChargeCost)
@@ -113,6 +99,5 @@ public class PlayerShoot : MonoBehaviour
             _currentCharge -= _shotChargeCost;
             yield return new WaitForSeconds(_shotDelay);
         }
-        _isFiring = false;
     }
 }
