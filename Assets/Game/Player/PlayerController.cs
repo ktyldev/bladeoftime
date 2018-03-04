@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
 
     private bool _isDashing = false;
     private bool _hasCooldown = false;
-    private bool _decelerating = false;
 
     private bool _isBusy { get { return (_melee.IsAttacking || _isDashing || _hasCooldown); } }
 
@@ -112,7 +111,6 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 dir;
-        float speed;
         if (_isDashing)
         {
             dir = transform.forward;
@@ -127,6 +125,7 @@ public class PlayerController : MonoBehaviour
             }
             else // Moving normally
             {
+                _anim.SetBool("isAttacking", false);
                 // fucking fight me
                 if (_zeroer.IsFucked)
                 {
@@ -135,6 +134,10 @@ public class PlayerController : MonoBehaviour
                 if (dir != Vector3.zero)
                 {
                     _currentMoveSpeed = Mathf.Lerp(_currentMoveSpeed, _moveSpeed, _acceleration);
+                }
+                else
+                {
+                    _currentMoveSpeed = 0;
                 }
             }
             _anim.SetFloat("inputV", _currentMoveSpeed);

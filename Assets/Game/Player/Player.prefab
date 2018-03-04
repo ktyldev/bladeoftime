@@ -4320,7 +4320,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1790360735913910}
-  m_LocalRotation: {x: -0.09374654, y: 0.6978552, z: 0.70746905, w: 0.06080673}
+  m_LocalRotation: {x: -0.09374654, y: 0.6978552, z: 0.70746905, w: 0.060806725}
   m_LocalPosition: {x: -0.05543403, y: 0.0017306843, z: 0.098653734}
   m_LocalScale: {x: 1.0000004, y: 1.0000006, z: 1.0000005}
   m_Children:
@@ -5608,14 +5608,14 @@ MonoBehaviour:
   _controlMode: {fileID: 1260726928104906, guid: 984cba2c0d6083c48bfdac4275320e20,
     type: 2}
   _moveSensitivity: 0.2
-  _moveSpeed: 8
+  _moveSpeed: 12
   _dashSpeed: 14
   _dashDuration: 0.6
   _rotateSensitivity: 0.2
-  _meleeDistance: 3
-  _meleeConeAngle: 150
   _attackTime: 1.5
   _attackMoment: 0.6
+  _acceleration: 0.5
+  _deceleration: 0.07
   _shootDistance: 50
   _baseGunCooldown: 5
 --- !u!114 &114493355240138518
@@ -5686,7 +5686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b114a1312a1fbf74787949bad4dc3289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trail: {fileID: 0}
+  _trail: {fileID: 1357504379579440}
 --- !u!120 &120392083293452440
 LineRenderer:
   m_ObjectHideFlags: 1
