@@ -80,9 +80,9 @@ public class PlayerController : MonoBehaviour
 
         GetComponent<Health>().Hit.AddListener(() =>
         {
-            int soundNum = Random.Range(1, 4);
-            _sfx.PlaySound(string.Format("hurt0{0}", soundNum));
+            _sfx.PlayRandomSound("hurt", 4);
             _anim.SetFloat("inputV", 0f);
+            StartCoroutine(DoDamagedHit());
         });
         
         if (_input == null)
@@ -200,5 +200,11 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(.8f);
         CameraController.Zoom(45);
+    }
+
+    IEnumerator DoDamagedHit()
+    {
+        yield return new WaitForSeconds(.1f);
+        CameraController.Pulse();
     }
 }
