@@ -13,8 +13,8 @@ public class Gamepad : MonoBehaviour, IControlMode
     public UnityEvent Melee { get; private set; }
     public UnityEvent Fire { get; private set; }
     public UnityEvent Dash { get; private set; }
-    public bool IsAiming { get { return Input.GetAxisRaw(GameTags.AimTrigger) > .3f; } }
-    public bool IsFiring { get { return Input.GetAxisRaw(GameTags.AimTrigger) > .3f; } }
+    public bool IsAiming { get { return Input.GetAxisRaw(GameTags.AimTrigger) == 1; } }
+    public bool IsFiring { get { return Input.GetAxisRaw(GameTags.Fire) == 1; } }
 
     public bool AnyButtonPressed
     {
@@ -35,7 +35,7 @@ public class Gamepad : MonoBehaviour, IControlMode
 
     void Update()
     {
-        if (Input.GetAxisRaw(GameTags.Fire) > 0.3f)
+        if (Input.GetAxisRaw(GameTags.Fire) == 1)
         {
             if (IsAiming && !_lastFire)
             {

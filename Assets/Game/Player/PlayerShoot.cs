@@ -108,7 +108,7 @@ public class PlayerShoot : MonoBehaviour
 
             _sfx.PlayRandomSound("laser", 10);
 
-            var p = Instantiate(_projectile, _projectileSpawn.position, _projectileSpawn.rotation);
+            Instantiate(_projectile, _projectileSpawn.position, _projectileSpawn.rotation);
 
             _currentCharge -= _shotChargeCost;
             yield return new WaitForSeconds(_shotDelay);
