@@ -58,6 +58,7 @@ public class Health : MonoBehaviour
     {
         Hit = new UnityEvent();
         Death = new UnityEvent();
+        Heal = new UnityEvent();
     }
 
     void Start()

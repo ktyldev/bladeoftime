@@ -7,5 +7,6 @@ public class HealthPickup : Pickup {
     public override void DoPickup()
     {
         this.Find<Health>(GameTags.Player).DoHeal();
+        print("healed!");
     }
 }

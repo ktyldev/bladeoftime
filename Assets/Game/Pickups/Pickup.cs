@@ -6,9 +6,10 @@ public abstract class Pickup : MonoBehaviour
 {
     public abstract void DoPickup();
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (!collision.collider.gameObject.CompareTag(GameTags.Player))
+        print("collided!");
+        if (!other.gameObject.CompareTag(GameTags.Player))
             return;
 
         DoPickup();
