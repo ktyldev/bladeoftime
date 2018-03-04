@@ -14,6 +14,7 @@ public class Gamepad : MonoBehaviour, IControlMode
     public UnityEvent Fire { get; private set; }
     public UnityEvent Dash { get; private set; }
     public bool IsAiming { get { return Input.GetAxisRaw(GameTags.AimTrigger) > .3f; } }
+    public bool IsFiring { get { return Input.GetAxisRaw(GameTags.AimTrigger) > .3f; } }
 
     void Awake()
     {
