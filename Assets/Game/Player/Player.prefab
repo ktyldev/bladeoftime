@@ -4319,7 +4319,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1790360735913910}
-  m_LocalRotation: {x: -0.09374654, y: 0.6978552, z: 0.70746905, w: 0.06080674}
+  m_LocalRotation: {x: -0.093746535, y: 0.6978551, z: 0.707469, w: 0.06080673}
   m_LocalPosition: {x: -0.05543403, y: 0.0017306843, z: 0.098653734}
   m_LocalScale: {x: 1.0000004, y: 1.0000006, z: 1.0000005}
   m_Children:
@@ -5427,8 +5427,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 1, z: 0.05}
-  m_Center: {x: -0.29, y: 0, z: 0.01}
+  m_Size: {x: 0.2, y: 0.87, z: 0.05}
+  m_Center: {x: -0.29, y: 0.09, z: 0.01}
 --- !u!95 &95003767462991274
 Animator:
   serializedVersion: 3
@@ -5656,6 +5656,7 @@ MonoBehaviour:
   _lineHeight: 0
   _projectile: {fileID: 1681999096615736, guid: f1a5873d8ff5a15418c4378477fdeb78,
     type: 2}
+  _projectileSpawnHeight: 1.5
   _shotChargeCost: 1
   _totalCharge: 5
   _chargeSpeed: 0.5
