@@ -34,7 +34,8 @@ public class PlayerMelee : MonoBehaviour
         if (IsAttacking)
             return;
 
-        int attackNumber = Random.Range(1, 6);
+        //int attackNumber = Random.Range(1, 6);
+        int attackNumber = Random.Range(1, 4);
         string trigger = string.Format("melee0{0}", attackNumber);
         _anim.SetTrigger(trigger);
         _anim.SetBool("isAttacking", true);
