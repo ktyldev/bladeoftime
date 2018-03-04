@@ -20,11 +20,14 @@ public class Health : MonoBehaviour
             return;
 
         Value -= damage;
-        Hit.Invoke();
 
         if (Value <= 0)
         {
             Death.Invoke();
+        }
+        else
+        {
+            Hit.Invoke();
         }
     }
 

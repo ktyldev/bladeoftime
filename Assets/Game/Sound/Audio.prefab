@@ -243,3 +243,6 @@ MonoBehaviour:
   - soundName: death
     soundObject: {fileID: 1521816422187582, guid: 6fd92165ed1dbc840abd1bd11bca1beb,
       type: 2}
+  - soundName: wilhelm
+    soundObject: {fileID: 1159175802775288, guid: 4bf1211f7458cef42af5aba32a735295,
+      type: 2}

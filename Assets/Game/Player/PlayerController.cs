@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            _sfx.PlaySoundDelayed((Random.Range(0, 100) == 0) ? "wilhelm" : "death", .1f);
+            _sfx.PlaySoundDelayed((Random.Range(0, 100) == 0) ? "wilhelm" : "death", .4f);
             StartCoroutine(DoDeathZoom());
         });
 
