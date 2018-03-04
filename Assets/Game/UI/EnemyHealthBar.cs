@@ -11,20 +11,16 @@ public class EnemyHealthBar : MonoBehaviour
     [SerializeField]
     private Image _healthBar;
 
-    // Use this for initialization
+    private Health _enemyHealth;
+
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        _enemyHealth = _enemy.GetComponent<Health>();
     }
 
     void OnGUI()
     {
+        _healthBar.fillAmount = _enemyHealth.Percentage;
         transform.LookAt(transform.position + Camera.main.transform.forward);
     }
 }

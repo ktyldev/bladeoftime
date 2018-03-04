@@ -8,6 +8,8 @@ public class Sword : MonoBehaviour
     [SerializeField]
     private GameObject _trail;
     [SerializeField]
+    private int _baseDamage;
+    [SerializeField]
     [Range(0f, 1f)]
     private float _startDamage;
     [SerializeField]
@@ -70,7 +72,7 @@ public class Sword : MonoBehaviour
             throw new System.Exception();
 
         _sfx.PlayRandomSound("hit", 5);
-        health.DoDamage();
+        health.DoDamage(_baseDamage);
         WibblyWobbly.SlowTime(_slowTimeAmount);
     }
 }

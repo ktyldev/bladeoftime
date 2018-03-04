@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class PlayerShot : Shot
 {
+    [SerializeField]
+    private int _baseDamage;
+
     protected override void OnHit(GameObject hitObject)
     {
         var health = hitObject.GetComponent<Health>();
         if (health == null)
             throw new Exception();
 
-        health.DoDamage(1);
+        health.DoDamage(_baseDamage);
     }
 
     protected override bool ValidateHit(GameObject obj)
