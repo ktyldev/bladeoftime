@@ -7,6 +7,8 @@ using Extensions;
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField]
+    private Animator _anim;
+    [SerializeField]
     private GameObject _lineRenderer;
     [SerializeField]
     private float _lineLength;
@@ -53,10 +55,13 @@ public class PlayerShoot : MonoBehaviour
         if (_input.IsAiming && !_active)
         {
             _active = true;
+            _anim.SetBool("kneel", true);
+
         }
         if (!_input.IsAiming && _active)
         {
             _active = false;
+            _anim.SetBool("kneel", false);
         }
 
         if (_active)
@@ -80,18 +85,6 @@ public class PlayerShoot : MonoBehaviour
         if (_isFiring)
             return;
 
-        // TODO: Empty gun click
-        //if (_currentCharge < _shotChargeCost)
-        //{
-        //    _sfx.PlayRandomSound("laser_empty", 5);
-        //    return;
-        //}
-
-        //_sfx.PlayRandomSound("laser", 10);
-
-        //Instantiate(_projectile, transform.position + Vector3.up * _projectileSpawnHeight, transform.rotation);
-        //_currentCharge -= _shotChargeCost;
-
         StartCoroutine(ContinuousFire());
     }
 
@@ -106,6 +99,7 @@ public class PlayerShoot : MonoBehaviour
                 break;
             }
 
+            _anim.SetTrigger("gunFire");
             _sfx.PlayRandomSound("laser", 10);
 
             Instantiate(_projectile, _projectileSpawn.position, _projectileSpawn.rotation);

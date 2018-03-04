@@ -635,6 +635,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 653346232}
+--- !u!95 &683131094 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95212207097851730, guid: 66f4266c68fffdd47bf92819ce39cd1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 2049310586}
 --- !u!1001 &726435327
 Prefab:
   m_ObjectHideFlags: 0
@@ -697,7 +702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &931583258
 Transform:
   m_ObjectHideFlags: 0
@@ -1164,6 +1169,19 @@ Prefab:
       value: 
       objectReference: {fileID: 1066433689135578, guid: d1ee6912c285c0740a3ff29a6d60ca40,
         type: 2}
+    - target: {fileID: 114595604021985780, guid: 66f4266c68fffdd47bf92819ce39cd1c,
+        type: 2}
+      propertyPath: _anim
+      value: 
+      objectReference: {fileID: 683131094}
+    - target: {fileID: 4147310717893142, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147310717893142, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
   m_IsPrefabParent: 0
