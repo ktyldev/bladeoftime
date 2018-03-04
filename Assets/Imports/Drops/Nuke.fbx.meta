@@ -1,33 +1,28 @@
 fileFormatVersion: 2
-guid: 650f6c5953c31074484fc8855c9dcd29
-timeCreated: 1520198596
+guid: eaffa1b682126b044803beaedefab7ed
+timeCreated: 1520200805
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Disc
-    100002: Platonic
-    100004: Platonic_1
-    100006: Sphere
-    100008: //RootNode
-    400000: Disc
-    400002: Platonic
-    400004: Platonic_1
-    400006: Sphere
-    400008: //RootNode
+    100000: Cone
+    100002: Cone_1
+    100004: Cone_2
+    100006: //RootNode
+    400000: Cone
+    400002: Cone_1
+    400004: Cone_2
+    400006: //RootNode
     2100000: No Name
-    2300000: Disc
-    2300002: Platonic
-    2300004: Platonic_1
-    2300006: Sphere
-    3300000: Disc
-    3300002: Platonic
-    3300004: Platonic_1
-    3300006: Sphere
-    4300000: Sphere
-    4300002: Disc
-    4300004: Platonic_1
-    4300006: Platonic
+    2300000: Cone
+    2300002: Cone_1
+    2300004: Cone_2
+    3300000: Cone
+    3300002: Cone_1
+    3300004: Cone_2
+    4300000: Cone_2
+    4300002: Cone_1
+    4300004: Cone
     9500000: //RootNode
   externalObjects: {}
   materials:
