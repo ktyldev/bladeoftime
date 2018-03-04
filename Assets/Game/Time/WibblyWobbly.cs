@@ -12,6 +12,13 @@ public class WibblyWobbly : MonoBehaviour
     [SerializeField]
     private float _timeIncreaseRate;
 
+    [SerializeField]
+    [Range(0f, 2f)]
+    private float _gameOverReduction = .5f;
+    [SerializeField]
+    [Range(0.01f, 0.1f)]
+    private float _gameOverLerp = 0.03f;
+
     public static float deltaTime { get {
             return Instance.DeltaTime;
         } }
@@ -37,8 +44,8 @@ public class WibblyWobbly : MonoBehaviour
     {
         if (GameOver.IsEnded())
         {
-            _timeSpeed = Mathf.Lerp(_timeSpeed, Mathf.Max(_timeSpeed - .5f, 0f), 0.02f);
-            if (_timeSpeed < 0.001f)
+            _timeSpeed = Mathf.Lerp(_timeSpeed, Mathf.Max(_timeSpeed - _gameOverReduction, 0f), _gameOverLerp);
+            if (_timeSpeed < 0.01f)
                 _timeSpeed = 0f;
         }
         else

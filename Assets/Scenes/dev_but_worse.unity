@@ -829,7 +829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   templates:
   - {fileID: 1536696236413526, guid: c19925c2dd09c2a49b99cc9bb4d1c504, type: 2}
-  minDistanceFromPlayer: 20
+  minDistanceFromPlayer: 8
   _spawnDelayMax: 2
   _spawnDelayMin: 1
   _spawnDelayMultiplier: 0.95
@@ -871,6 +871,11 @@ Prefab:
     - target: {fileID: 4546484650199812, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493355240138518, guid: 66f4266c68fffdd47bf92819ce39cd1c,
+        type: 2}
+      propertyPath: _initialValue
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
