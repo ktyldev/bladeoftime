@@ -16,16 +16,19 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private GameObject _projectile;
     [SerializeField]
-    private float _projectileSpawnHeight;
+    private Transform _projectileSpawn;
     [SerializeField]
     private int _shotChargeCost;
     [SerializeField]
     private float _totalCharge;
     [SerializeField]
     private float _chargeSpeed;
+    [SerializeField]
+    private float _shotDelay;
     
     public bool IsAttacking { get; private set; }
     public float CooldownPercent { get { return _currentCharge / _totalCharge; } }
+    public bool CanAttack { get { return _currentCharge > _shotChargeCost; } }
 
     private LineRenderer _line;
     private SFXManager _sfx;
@@ -33,6 +36,7 @@ public class PlayerShoot : MonoBehaviour
     private bool _active;
     private bool _onCooldown;
     private float _currentCharge;
+    private bool _isFiring;
     
     void Start()
     {
@@ -73,16 +77,42 @@ public class PlayerShoot : MonoBehaviour
 
     public void Fire()
     {
-        // TODO: Empty gun click
-        if (_currentCharge < _shotChargeCost)
-        {
-            _sfx.PlayRandomSound("laser_empty", 5);
+        if (_isFiring)
             return;
+
+        // TODO: Empty gun click
+        //if (_currentCharge < _shotChargeCost)
+        //{
+        //    _sfx.PlayRandomSound("laser_empty", 5);
+        //    return;
+        //}
+
+        //_sfx.PlayRandomSound("laser", 10);
+
+        //Instantiate(_projectile, transform.position + Vector3.up * _projectileSpawnHeight, transform.rotation);
+        //_currentCharge -= _shotChargeCost;
+
+        StartCoroutine(ContinuousFire());
+    }
+
+    private IEnumerator ContinuousFire()
+    {
+        _isFiring = true;
+        while (_input.IsFiring)
+        {
+            if (_currentCharge < _shotChargeCost)
+            {
+                _sfx.PlayRandomSound("laser_empty", 5);
+                break;
+            }
+
+            _sfx.PlayRandomSound("laser", 10);
+
+            var p = Instantiate(_projectile, _projectileSpawn.position, _projectileSpawn.rotation);
+
+            _currentCharge -= _shotChargeCost;
+            yield return new WaitForSeconds(_shotDelay);
         }
-
-        _sfx.PlayRandomSound("laser", 10);
-
-        Instantiate(_projectile, transform.position + Vector3.up * _projectileSpawnHeight, transform.rotation);
-        _currentCharge -= _shotChargeCost;
+        _isFiring = false;
     }
 }
