@@ -28,6 +28,7 @@ public class PlayerMelee : MonoBehaviour
         int attackNumber = Random.Range(1, 6);
         string trigger = string.Format("melee0{0}", attackNumber);
         _anim.SetTrigger(trigger);
+        _anim.SetBool("isAttacking", true);
         _anim.SetFloat("inputV", 0f);
 
         _sfx.PlayRandomSoundDelayed("attack", 5, .1f);
@@ -40,5 +41,7 @@ public class PlayerMelee : MonoBehaviour
         IsAttacking = true;
         yield return new WaitForSecondsRealtime(_attackTime);
         IsAttacking = false;
+
+        _anim.SetBool("isAttacking", false);
     }
 }

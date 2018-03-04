@@ -30,7 +30,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Range(0, 1)]
     private float _attackMoment;
-
+    [Range(0, 1)]
+    [SerializeField]
+    private float _acceleration;
+    [Range(0, 0.1f)]
+    [SerializeField]
+    private float _deceleration;
     [SerializeField]
     private float _shootDistance;
     [SerializeField]
@@ -38,15 +43,17 @@ public class PlayerController : MonoBehaviour
 
     // I want to be sick
     private RotationZeroer _zeroer;
-    
+
     private IControlMode _input;
     private Vector3 _momentum;
     private SFXManager _sfx;
     private PlayerShoot _gun;
     private PlayerMelee _melee;
+    private float _currentMoveSpeed;
 
     private bool _isDashing = false;
     private bool _hasCooldown = false;
+    private bool _decelerating = false;
 
     private bool _isBusy { get { return (_melee.IsAttacking || _isDashing || _hasCooldown); } }
 
@@ -80,7 +87,7 @@ public class PlayerController : MonoBehaviour
             _anim.SetFloat("inputV", 0f);
             StartCoroutine(DoDamagedHit());
         });
-        
+
         if (_input == null)
             throw new System.Exception();
 
@@ -109,30 +116,32 @@ public class PlayerController : MonoBehaviour
         if (_isDashing)
         {
             dir = transform.forward;
-            speed = _dashSpeed;
+            _currentMoveSpeed = _dashSpeed;
         }
         else
         {
             dir = _input.MoveDirection;
             if (_melee.IsAttacking || _input.IsAiming)
             {
-                speed = 0;
-                _anim.SetFloat("inputV", 0f);
+                _currentMoveSpeed = Mathf.Lerp(_currentMoveSpeed, 0, _deceleration);
             }
-            else
+            else // Moving normally
             {
                 // fucking fight me
                 if (_zeroer.IsFucked)
                 {
                     _zeroer.UnFuck();
                 }
-
-                speed = _moveSpeed;
-                _anim.SetFloat("inputV", dir != Vector3.zero ? _momentum.magnitude * _moveSpeed : 0);
+                if (dir != Vector3.zero)
+                {
+                    _currentMoveSpeed = Mathf.Lerp(_currentMoveSpeed, _moveSpeed, _acceleration);
+                }
             }
+            _anim.SetFloat("inputV", _currentMoveSpeed);
         }
+
         _momentum = Vector3.Lerp(_momentum, dir, _moveSensitivity);
-        transform.Translate(_momentum * speed * Time.deltaTime, Space.World);
+        transform.Translate(_momentum * _currentMoveSpeed * Time.deltaTime, Space.World);
     }
 
     private void Aim()
@@ -145,7 +154,7 @@ public class PlayerController : MonoBehaviour
 
         if (targetDirection == Vector3.zero)
             return;
-        
+
         var targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _rotateSensitivity);
     }
@@ -172,7 +181,7 @@ public class PlayerController : MonoBehaviour
 
         _gun.Fire();
     }
-    
+
     private void Dash()
     {
         if (_isBusy || _momentum == Vector3.zero || _input.MoveDirection == Vector3.zero)
