@@ -44,6 +44,7 @@ public class GameOver : MonoBehaviour
     {
         _gameOver = true;
         MusicManager.SetFilter(true);
+        PostFXHandler.DesaturateFade();
         yield return new WaitForSecondsRealtime(4f);
         _canReload = true;
     }
