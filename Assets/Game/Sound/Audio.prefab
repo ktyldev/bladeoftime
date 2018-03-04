@@ -133,8 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79da6f0c1412aae4dbb7e3fa29d3b5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loop: {fileID: 1424536500784696, guid: e43697f541172aa42ad0ae502728985b, type: 2}
   filterFreq: 400
+  music:
+  - intro: {fileID: 1443402558065372, guid: 1f6020c8a4ce6cf4b9f03cd4629e5fc8, type: 2}
+    loop: {fileID: 1223388399636184, guid: 1b8ef8c5f65b6bc4ab8b89e7c9a9ebef, type: 2}
+  - intro: {fileID: 1928019399812940, guid: 201bc1bb52c934b4bb1e1be35557f000, type: 2}
+    loop: {fileID: 1037960536192878, guid: ff0ce003063583642b8b02bd8b5f815f, type: 2}
 --- !u!114 &114755696158914600
 MonoBehaviour:
   m_ObjectHideFlags: 1

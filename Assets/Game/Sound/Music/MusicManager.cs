@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class Music
+{
+    public GameObject intro;
+    public GameObject loop;
+}
+
 public class MusicManager : AudioManager {
     
     protected override string _VolumeKey
@@ -12,16 +19,28 @@ public class MusicManager : AudioManager {
         }
     }
 
-    public GameObject loop;
     [SerializeField]
     private float filterFreq = 400f;
 
+    [SerializeField]
+    private Music[] music;
+    private Music _music;
+
+    private GameObject _intro;
+    private GameObject _loop;
+
+    private AudioSource _introSource;
+    private AudioSource _loopSource;
+
     private float _targetFreq;
+    private float _currentFreq;
+
     private float _targetPitch;
-    private GameObject _loopInstance;
-    private AudioSource _loop;
-    private bool _isFiltered = false;
+    private float _currentPitch;
+
     private AudioLowPassFilter _filter;
+
+    private bool _isFiltered = false;
 
     private static MusicManager Instance { get; set; }
 
@@ -31,25 +50,44 @@ public class MusicManager : AudioManager {
             throw new System.Exception();
 
         Instance = this;
+        _music = music[Random.Range(0, music.Length)];
+
+        _intro = Instantiate(_music.intro, transform);
+        _loop = Instantiate(_music.loop, transform);
+
+        _introSource = _intro.GetComponent<AudioSource>();
+        _loopSource = _loop.GetComponent<AudioSource>();
+
+        _filter = _intro.GetComponent<AudioLowPassFilter>();
+
+        var introLength = _introSource.clip.length;
+
+        _introSource.Play();
     }
 
     void Start() {
-        _loopInstance = Instantiate(loop, transform);
-        _loop = _loopInstance.GetComponent<AudioSource>();
-        _filter = _loopInstance.GetComponent<AudioLowPassFilter>();
         _targetFreq = _filter.cutoffFrequency;
-        _targetPitch = _loop.pitch;
-        _loop.Play();
+        _targetPitch = _introSource.pitch;
     }
 
     void Update()
     {
-        _filter.cutoffFrequency = Mathf.Lerp(_filter.cutoffFrequency, _targetFreq, 0.05f);
-        _loop.pitch = Mathf.Lerp(_loop.pitch, _targetPitch, 0.05f);
+        _currentFreq = Mathf.Lerp(_currentFreq, _targetFreq, 0.05f);
+        _currentPitch = Mathf.Lerp(_currentPitch, _targetPitch, 0.05f);
+
+        var _currSound = (_intro == null) ? _loopSource : _introSource;
+        _currSound.pitch = _currentPitch;
+        _filter.cutoffFrequency = _currentFreq;
     }
 
-    void OnGUI() {
-        _loop.volume = Volume;
+    private void FixedUpdate()
+    {
+        if (!_loopSource.isPlaying && !_introSource.isPlaying )
+        {
+            Destroy(_intro);
+            _loopSource.Play();
+            _filter = _loop.GetComponent<AudioLowPassFilter>();
+        }
     }
 
     public bool Filter {
@@ -61,7 +99,7 @@ public class MusicManager : AudioManager {
             _isFiltered = !_isFiltered;
 
             _targetFreq = (_isFiltered) ? filterFreq : 22000f;
-            _targetPitch = (_isFiltered) ? .8f : 1f;
+            _targetPitch = (_isFiltered) ? .85f : 1f;
         }
     }
 
