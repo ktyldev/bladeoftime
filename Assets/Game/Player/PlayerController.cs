@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<Health>().Death.AddListener(() =>
         {
             print("game over!");
+            _anim.SetFloat("inputV", 0f);
             _anim.SetTrigger("deathAnimation");
         });
 
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             int soundNum = Random.Range(1, 4);
             _sfx.PlaySound(string.Format("hurt0{0}", soundNum));
+            _anim.SetFloat("inputV", 0f);
         });
         
         if (_input == null)

@@ -8,11 +8,26 @@ public class Sword : MonoBehaviour
     private PlayerMelee _melee;
     private SFXManager _sfx;
     private bool _isSwinging;
+    [SerializeField]
+    private GameObject _trail;
+
+    public bool Trail
+    {
+        set
+        {
+            _trail.SetActive(value);
+        }
+        get
+        {
+            return _trail.activeInHierarchy;
+        }
+    }
     
     void Start()
     {
         _melee = this.Find<PlayerMelee>(GameTags.Player);
         _sfx = this.Find<SFXManager>(GameTags.Sound);
+        Trail = false;
     }
 
     void Update()
@@ -21,11 +36,13 @@ public class Sword : MonoBehaviour
         {
             // Start swing
             _isSwinging = true;
+            Trail = true;
             _sfx.PlayRandomSoundDelayed("nohit", 2, .5f);
         }
         if (_isSwinging && !_melee.IsAttacking)
         {
             // Swing ended
+            Trail = false;
             _isSwinging = false;
         }
     }
