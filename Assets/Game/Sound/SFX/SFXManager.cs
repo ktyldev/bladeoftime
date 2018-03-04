@@ -46,9 +46,21 @@ public class SFXManager : AudioManager
         PlaySound(sound.soundObject);
     }
 
+    public void PlayRandomSound(string soundNameBase, int max)
+    {
+        var ಠ_ಠ = string.Format("{0}{1:00}", soundNameBase, Random.Range(1, max + 1));
+        PlaySound(ಠ_ಠ);
+    }
+
     public void PlaySoundDelayed(string soundName, float delay)
     {
         StartCoroutine(PlaySoundDelayedCoroutine(soundName, delay));
+    }
+
+    public void PlayRandomSoundDelayed(string soundNameBase, int max, float delay)
+    {
+        var ಠ_ಠ = string.Format("{0}{1:00}", soundNameBase, Random.Range(1, max + 1));
+        StartCoroutine(PlaySoundDelayedCoroutine(ಠ_ಠ, delay));
     }
 
     private IEnumerator PlaySoundDelayedCoroutine(string soundName, float delay)
