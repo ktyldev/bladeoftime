@@ -4,6 +4,7 @@
     public const string UI = "UI";
     public const string Sound = "Sound";
     public const string Time = "Time";
+    public const string Input = "Input";
 
     // Inputs
     public const string Fire = "Fire";

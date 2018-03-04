@@ -23,11 +23,13 @@ public class SFXManager : AudioManager
 
     public void PlaySound(GameObject sound)
     {
-        var audio = Instantiate(sound, transform)
-            .GetComponent<AudioSource>();
+        var audioObj = Instantiate(sound, transform);
+        var audio = audioObj.GetComponent<AudioSource>();
 
         audio.volume *= Volume;
         audio.Play();
+
+        Destroy(audioObj, 1f);
     }
 
     public void PlaySound(string soundName)

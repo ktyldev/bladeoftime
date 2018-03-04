@@ -5488,8 +5488,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.87, z: 0.05}
-  m_Center: {x: -0.29, y: 0.09, z: 0.01}
+  m_Size: {x: 0.21089488, y: 1.0114638, z: 0.05}
+  m_Center: {x: -0.2534157, y: 0.16073191, z: 0.01000027}
 --- !u!95 &95212207097851730
 Animator:
   serializedVersion: 3
@@ -5652,7 +5652,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.15
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.7
@@ -5875,7 +5875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca8d90c35b372d4bb4879e1395fb571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialValue: 1
+  _initialValue: 5
 --- !u!114 &114595604021985780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5935,8 +5935,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trail: {fileID: 1357504379579440}
+  _baseDamage: 3
   _startDamage: 0
   _endDamage: 0
+  _slowTimeAmount: 0.2
 --- !u!120 &120392083293452440
 LineRenderer:
   m_ObjectHideFlags: 1

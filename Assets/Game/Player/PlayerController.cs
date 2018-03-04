@@ -55,6 +55,9 @@ public class PlayerController : MonoBehaviour
     private bool _hasCooldown = false;
 
     private bool _isBusy { get { return (_melee.IsAttacking || _isDashing || _hasCooldown); } }
+    public IControlMode Input {
+        get { return _input; }
+    }
 
     private void Awake()
     {

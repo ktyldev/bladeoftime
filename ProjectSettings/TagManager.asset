@@ -7,6 +7,7 @@ TagManager:
   - UI
   - Time
   - Sound
+  - Input
   layers:
   - Default
   - TransparentFX
