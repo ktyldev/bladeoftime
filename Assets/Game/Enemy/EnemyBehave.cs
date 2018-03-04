@@ -8,11 +8,9 @@ public class EnemyBehave : MonoBehaviour {
     [SerializeField]
     private float _speed;
     [SerializeField]
-    private float _attackDistance;
+    private float _screamDistance;
     [SerializeField]
     private float _attackCooldown;
-    [SerializeField]
-    private float _slowTimeAmount;
 
     private Transform _player;
     private bool _canAttack = true;
@@ -41,13 +39,9 @@ public class EnemyBehave : MonoBehaviour {
             return;
 
         float _playerDist = Vector3.Distance(transform.position, _player.position);
-        if (_playerDist < _attackDistance + 1f && _canScream)
+        if (_playerDist < _screamDistance && _canScream)
         {
             StartCoroutine(Scream());
-        }
-        if (_playerDist < _attackDistance && _canAttack)
-        {
-            StartCoroutine(Attack());
         }
     }
     
@@ -66,5 +60,18 @@ public class EnemyBehave : MonoBehaviour {
         _sfx.PlaySound("enemy_scream");
         yield return new WaitForSeconds(_attackCooldown);
         _canScream = true;
+    }
+
+    private void OnCollisionEnter(Collision coll)
+    {
+        if (!_canAttack || !coll.collider.gameObject.CompareTag(GameTags.Player))
+            return;
+
+        StartCoroutine(Attack());
+    }
+
+    private void OnCollisionStay(Collision coll)
+    {
+        OnCollisionEnter(coll);
     }
 }

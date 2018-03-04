@@ -348,10 +348,10 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 0
+    value: 1
   intensity:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 4.2
   threshold:
     overrideState: 0
     value: 1
@@ -362,17 +362,17 @@ MonoBehaviour:
     overrideState: 0
     value: 7
   anamorphicRatio:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 1
   color:
-    overrideState: 0
-    value: {r: 1, g: 1, b: 1, a: 1}
+    overrideState: 1
+    value: {r: 1, g: 0.47586206, b: 0.631, a: 1}
   fastMode:
     overrideState: 0
     value: 0
   dirtTexture:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 2800000, guid: 388ef1bd8193f2b4bbfd42bf204e7dd5, type: 3}
   dirtIntensity:
     overrideState: 0
     value: 0
@@ -411,16 +411,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   focusDistance:
     overrideState: 1
-    value: 0.305
+    value: 9.56
   aperture:
     overrideState: 1
-    value: 0.3
+    value: 32
   focalLength:
     overrideState: 1
     value: 23

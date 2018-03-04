@@ -1,12 +1,13 @@
 ﻿using Extensions;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _trail;
+    private GameObject[] _trails;
     [SerializeField]
     private int _baseDamage;
     [SerializeField]
@@ -17,32 +18,69 @@ public class Sword : MonoBehaviour
     private float _endDamage;
     [SerializeField]
     private float _slowTimeAmount;
+    [SerializeField]
+    private float _maxLightIntensity;
+    [SerializeField]
+    private GameObject[] _lights;
+    [Range(0, 1)]
+    [SerializeField]
+    private float _lightUpSpeed;
+
+    private bool Trails { set { _trails.ToList().ForEach(t => t.SetActive(value)); } }
 
     private PlayerMelee _melee;
     private SFXManager _sfx;
     private bool _isSwinging;
+    private float _initialLightIntensity;
     
     void Start()
     {
         _melee = this.Find<PlayerMelee>(GameTags.Player);
         _sfx = this.Find<SFXManager>(GameTags.Sound);
-        _trail.SetActive(false);
-    }
+        _trails.ToList().ForEach(t => t.SetActive(false));
+        _initialLightIntensity = _lights.First().GetComponent<Light>().intensity;
 
+        StartCoroutine(FadeLights());
+    }
+    
     void Update()
     {
         if (!_isSwinging && _melee.IsAttacking)
         {
             // Start swing
             _isSwinging = true;
-            _trail.SetActive(true);
+            Trails = true;
             _sfx.PlayRandomSoundDelayed("nohit", 2, .5f);
+
         }
         if (_isSwinging && !_melee.IsAttacking)
         {
             // Swing ended
-            _trail.SetActive(false);
+            Trails = false;
             _isSwinging = false;
+        }
+    }
+
+    private IEnumerator FadeLights()
+    {
+        var start = Time.time;
+        var lights = _lights.Select(go => go.GetComponent<Light>());
+        var brightness = lights.First().intensity;
+        
+        while (true)
+        {
+            foreach (var light in lights)
+            {
+                if (_isSwinging)
+                {
+                    light.intensity = Mathf.Lerp(light.intensity, _maxLightIntensity, _lightUpSpeed);
+                }
+                else
+                {
+                    light.intensity = Mathf.Lerp(light.intensity, _initialLightIntensity, _lightUpSpeed);
+                }
+            }
+            yield return new WaitForEndOfFrame();
         }
     }
 
