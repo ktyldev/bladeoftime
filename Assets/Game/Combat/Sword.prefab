@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 65228613424696286}
   - component: {fileID: 114961385408357402}
   m_Layer: 0
-  m_Name: sword_low
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,3 +487,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b114a1312a1fbf74787949bad4dc3289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trail: {fileID: 1302064779369578}
