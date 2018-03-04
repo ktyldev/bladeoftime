@@ -89,6 +89,11 @@ public class EnemyBehave : MonoBehaviour {
         {
             StartCoroutine(Scream());
         }
+
+        if (_playerDist > 100f)
+        {
+            Destroy(gameObject);
+        }
     }
     
     private IEnumerator Attack()
