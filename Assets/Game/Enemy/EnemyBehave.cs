@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Extensions;
+using System.Linq;
+using System;
 
 public class EnemyBehave : MonoBehaviour {
 
@@ -11,12 +13,22 @@ public class EnemyBehave : MonoBehaviour {
     private float _screamDistance;
     [SerializeField]
     private float _attackCooldown;
+    [SerializeField]
+    private float _slowTimeAmount;
+    [SerializeField]
+    private GameObject[] _spawnLights;
+    [SerializeField]
+    private float _lightFadeSpeed;
+    [SerializeField]
+    private float _lightFadeTime;
 
     private Transform _player;
     private bool _canAttack = true;
     private bool _canScream = true;
     private Rigidbody _physics;
     private SFXManager _sfx;
+    private float _spawnLightIntensity;
+    private bool _ded = false;
 
     // Use this for initialization
     void Start () {
@@ -24,16 +36,44 @@ public class EnemyBehave : MonoBehaviour {
         _player = this.Find(GameTags.Player).transform;
         _physics = GetComponent<Rigidbody>();
 
+        _spawnLightIntensity = _spawnLights
+            .First()
+            .GetComponent<Light>().intensity;
+
+        StartCoroutine(FadeLights(false));
+
         GetComponent<Health>().Death.AddListener(() =>
         {
-            Destroy(gameObject);
+            _ded = true;
+            StartCoroutine(FadeLights(true));
         });
 	}
+
+    private IEnumerator FadeLights(bool turnOn)
+    {
+        var start = Time.time;
+        var lights = _spawnLights
+            .Select(go => go.GetComponent<Light>())
+            .ToList();
+        
+        while (Time.time - start < _lightFadeTime)
+        {
+            lights.ForEach(l => l.intensity = Mathf.Lerp(l.intensity, turnOn ? _spawnLightIntensity : 0, _lightFadeSpeed));
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (turnOn)
+        {
+            Destroy(gameObject);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        transform.LookAt(_player);
-        _physics.velocity = transform.forward * _speed * 2f *  WibblyWobbly.TimeSpeed;
+        if (_ded)
+            return;
+        
+        _physics.velocity = (_player.transform.position - transform.position).normalized * _speed * 2f *  WibblyWobbly.TimeSpeed;
 
         if (GameOver.IsEnded())
             return;
@@ -49,6 +89,10 @@ public class EnemyBehave : MonoBehaviour {
     {
         _canAttack = false;
         var health = _player.GetComponent<Health>();
+
+        if (_ded)
+            yield break;
+
         health.DoDamage(1);
         yield return new WaitForSeconds(_attackCooldown);
         _canAttack = true;

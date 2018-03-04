@@ -65,7 +65,6 @@ public class Sword : MonoBehaviour
     {
         var start = Time.time;
         var lights = _lights.Select(go => go.GetComponent<Light>());
-        var brightness = lights.First().intensity;
         
         while (true)
         {
