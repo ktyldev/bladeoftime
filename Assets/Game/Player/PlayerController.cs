@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
             print("game over!");
             _anim.SetFloat("inputV", 0f);
             _anim.SetTrigger("deathAnimation");
-            CameraController.Zoom(45);
+            StartCoroutine(DoDeathZoom());
         });
 
         GetComponent<Health>().Hit.AddListener(() =>
@@ -194,5 +194,11 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         _isDashing = false;
+    }
+
+    IEnumerator DoDeathZoom()
+    {
+        yield return new WaitForSeconds(.8f);
+        CameraController.Zoom(45);
     }
 }
