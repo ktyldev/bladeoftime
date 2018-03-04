@@ -21,6 +21,6 @@ public abstract class Pickup : MonoBehaviour
     private void Update()
     {
         Vector3 _rot = this.transform.eulerAngles;
-        this.transform.rotation = Quaternion.Euler(new Vector3(0f, _rot.y + .1f, 0f));
+        this.transform.rotation = Quaternion.Euler(new Vector3(0f, _rot.y + .5f, 0f));
     }
 }
