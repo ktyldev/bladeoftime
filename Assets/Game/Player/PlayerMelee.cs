@@ -31,7 +31,7 @@ public class PlayerMelee : MonoBehaviour
 
     public void Melee()
     {
-        if (IsAttacking)
+        if (IsAttacking || GameOver.IsEnded())
             return;
 
         //int attackNumber = Random.Range(1, 6);
