@@ -3182,7 +3182,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1553212234527088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.788, z: 0.921}
+  m_LocalPosition: {x: 0, y: 1.2, z: 1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4546484650199812}
@@ -4491,7 +4491,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1790360735913910}
-  m_LocalRotation: {x: -0.09374654, y: 0.6978552, z: 0.70746905, w: 0.060806714}
+  m_LocalRotation: {x: -0.09374654, y: 0.6978552, z: 0.70746905, w: 0.06080671}
   m_LocalPosition: {x: -0.05543403, y: 0.0017306843, z: 0.098653734}
   m_LocalScale: {x: 1.0000004, y: 1.0000006, z: 1.0000005}
   m_Children:
@@ -6183,7 +6183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 95212207097851730}
-  _controlMode: {fileID: 1260726928104906, guid: 984cba2c0d6083c48bfdac4275320e20,
+  _controlMode: {fileID: 1066433689135578, guid: d1ee6912c285c0740a3ff29a6d60ca40,
     type: 2}
   _moveSensitivity: 0.2
   _moveSpeed: 12
