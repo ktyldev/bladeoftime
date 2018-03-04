@@ -157,11 +157,11 @@ public class PlayerController : MonoBehaviour
 
         int attackNumber = Random.Range(1, 6);
         string trigger = string.Format("melee0{0}", attackNumber);
-
-        _sfx.PlayRandomSoundDelayed("attack", 5, .1f);
+        _anim.SetTrigger(trigger);
 
         _anim.SetFloat("inputV", 0f);
-        _anim.SetTrigger(trigger);
+
+        _sfx.PlayRandomSoundDelayed("attack", 5, .1f);
 
         StartCoroutine(MeleeAttack());
     }
