@@ -11,6 +11,8 @@ public class WibblyWobbly : MonoBehaviour
     private float _maxTime;
     [SerializeField]
     private float _timeIncreaseRate;
+    [SerializeField]
+    private float _startTimeRate;
 
     [SerializeField]
     [Range(0f, 2f)]
@@ -30,7 +32,7 @@ public class WibblyWobbly : MonoBehaviour
     private static WibblyWobbly Instance { get; set; }
 
     private float DeltaTime { get { return Time.deltaTime * _timeSpeed; } }
-    private float _timeSpeed = 1;
+    private float _timeSpeed;
 
     private void Awake()
     {
@@ -38,6 +40,7 @@ public class WibblyWobbly : MonoBehaviour
             throw new System.Exception();
 
         Instance = this;
+        _timeSpeed = _startTimeRate;
     }
 
     void Update()

@@ -157,6 +157,7 @@ MonoBehaviour:
   _minTime: 0.1
   _maxTime: 2
   _timeIncreaseRate: 0.02
+  _startTimeRate: 0.1
 --- !u!1 &66147889
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,19 +897,34 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4627734611682038, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.09374654
+      value: -0.093746535
       objectReference: {fileID: 0}
     - target: {fileID: 4627734611682038, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.6978552
+      value: 0.6978551
       objectReference: {fileID: 0}
     - target: {fileID: 4627734611682038, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.70746905
+      value: 0.707469
       objectReference: {fileID: 0}
     - target: {fileID: 4627734611682038, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.06080674
+      value: 0.060806733
+      objectReference: {fileID: 0}
+    - target: {fileID: 114595604021985780, guid: 66f4266c68fffdd47bf92819ce39cd1c,
+        type: 2}
+      propertyPath: _projectileSpawnHeight
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 65131864877634966, guid: 66f4266c68fffdd47bf92819ce39cd1c,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 65131864877634966, guid: 66f4266c68fffdd47bf92819ce39cd1c,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 0.09
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}

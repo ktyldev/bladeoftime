@@ -220,7 +220,7 @@ MonoBehaviour:
   _speed: 1
   _attackDistance: 1
   _attackCooldown: 2
-  _slowTimeAmount: 0
+  _slowTimeAmount: 0.1
 --- !u!114 &114151344601405880
 MonoBehaviour:
   m_ObjectHideFlags: 1

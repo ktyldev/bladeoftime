@@ -15,6 +15,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private GameObject _projectile;
     [SerializeField]
+    private float _projectileSpawnHeight;
+    [SerializeField]
     private int _shotChargeCost;
     [SerializeField]
     private float _totalCharge;
@@ -72,7 +74,7 @@ public class PlayerShoot : MonoBehaviour
         if (_currentCharge < _shotChargeCost)
             return;
         
-        Instantiate(_projectile, transform.position, transform.rotation);
+        Instantiate(_projectile, transform.position + Vector3.up * _projectileSpawnHeight, transform.rotation);
         _currentCharge -= _shotChargeCost;
     }
 }
