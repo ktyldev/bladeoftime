@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     private bool _hasCooldown = false;
     private bool _isStaggered = false;
 
-    private bool _isBusy { get { return (_melee.IsAttacking || _isDashing || _hasCooldown || _isStaggered); } }
+    private bool _isBusy { get { return (_melee.IsAttacking || _isDashing || _hasCooldown || _isStaggered || GameOver.IsEnded()); } }
     public IControlMode Input {
         get { return _input; }
     }
@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
     private void Aim()
     {
-        if (_isDashing)
+        if (_isDashing || GameOver.IsEnded())
             return;
 
         bool isStill = _input.MoveDirection == Vector3.zero;
