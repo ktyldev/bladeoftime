@@ -3029,6 +3029,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114667714819659784, guid: fe0372507f6c8354c9ea0e2591b5334e,
+        type: 2}
+      propertyPath: sounds.Array.size
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 4975615344946970, guid: fe0372507f6c8354c9ea0e2591b5334e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3061,6 +3066,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114667714819659784, guid: fe0372507f6c8354c9ea0e2591b5334e,
+        type: 2}
+      propertyPath: sounds.Array.data[16].soundName
+      value: pew01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114667714819659784, guid: fe0372507f6c8354c9ea0e2591b5334e,
+        type: 2}
+      propertyPath: sounds.Array.data[16].soundObject
+      value: 
+      objectReference: {fileID: 1493353049312868, guid: 9a24e4925dd0ff946bf699eae07d422b,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe0372507f6c8354c9ea0e2591b5334e, type: 2}
   m_IsPrefabParent: 0
@@ -3363,6 +3379,11 @@ Prefab:
     - target: {fileID: 1172711185179536, guid: c03e4b2698d9efe4b8c081111a8f51ea, type: 2}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 20945385977079300, guid: c03e4b2698d9efe4b8c081111a8f51ea,
+        type: 2}
+      propertyPath: orthographic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c03e4b2698d9efe4b8c081111a8f51ea, type: 2}

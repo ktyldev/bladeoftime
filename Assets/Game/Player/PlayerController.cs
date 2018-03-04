@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
             print("game over!");
             _anim.SetFloat("inputV", 0f);
             _anim.SetTrigger("deathAnimation");
+            CameraController.Zoom(45);
         });
 
         GetComponent<Health>().Hit.AddListener(() =>

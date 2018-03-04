@@ -183,7 +183,7 @@ MonoBehaviour:
     value: 68
   lift:
     overrideState: 1
-    value: {x: 0.99613446, y: 0.9799471, z: 1, w: 0}
+    value: {x: 1, y: 0.94903606, z: 0.9460071, w: 0}
   gamma:
     overrideState: 1
     value: {x: 0.9980689, y: 0.9899747, z: 1, w: 0}
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1

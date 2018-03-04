@@ -73,6 +73,7 @@ public class PlayerShoot : MonoBehaviour
         // TODO: Empty gun click
         if (_currentCharge < _shotChargeCost)
             return;
+
         
         Instantiate(_projectile, transform.position + Vector3.up * _projectileSpawnHeight, transform.rotation);
         _currentCharge -= _shotChargeCost;
