@@ -6214,7 +6214,7 @@ MonoBehaviour:
   _baseDamage: 3
   _startDamage: 0.2
   _endDamage: 0.75
-  _slowTimeAmount: 0.3
+  _slowTimeAmount: 0
   _maxLightIntensity: 100
   _lights:
   - {fileID: 1545816528688700}

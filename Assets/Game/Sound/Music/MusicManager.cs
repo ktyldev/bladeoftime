@@ -17,6 +17,7 @@ public class MusicManager : AudioManager {
     private float filterFreq = 400f;
 
     private float _targetFreq;
+    private float _targetPitch;
     private GameObject _loopInstance;
     private AudioSource _loop;
     private bool _isFiltered = false;
@@ -37,12 +38,14 @@ public class MusicManager : AudioManager {
         _loop = _loopInstance.GetComponent<AudioSource>();
         _filter = _loopInstance.GetComponent<AudioLowPassFilter>();
         _targetFreq = _filter.cutoffFrequency;
+        _targetPitch = _loop.pitch;
         _loop.Play();
     }
 
     void Update()
     {
         _filter.cutoffFrequency = Mathf.Lerp(_filter.cutoffFrequency, _targetFreq, 0.05f);
+        _loop.pitch = Mathf.Lerp(_loop.pitch, _targetPitch, 0.05f);
     }
 
     void OnGUI() {
@@ -58,6 +61,7 @@ public class MusicManager : AudioManager {
             _isFiltered = !_isFiltered;
 
             _targetFreq = (_isFiltered) ? filterFreq : 22000f;
+            _targetPitch = (_isFiltered) ? .8f : 1f;
         }
     }
 
