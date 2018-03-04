@@ -11,10 +11,7 @@ public class PlayerShoot : MonoBehaviour
     private float _lineLength;
     [SerializeField]
     private float _lineHeight;
-    [SerializeField]
-    private float _shootDistance;
-    [SerializeField]
-    private float _cooldownTime;
+
     [SerializeField]
     private GameObject _projectile;
     [SerializeField]
