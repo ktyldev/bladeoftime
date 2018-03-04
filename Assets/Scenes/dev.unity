@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.5698238, g: 0.4202679, b: 0.39836872, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -859,7 +859,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   templates:
-  - {fileID: 1927337822709802, guid: 2eeca5bd63feab7458d56fd555b59cf6, type: 2}
+  - {fileID: 1588129614922640, guid: 2eeca5bd63feab7458d56fd555b59cf6, type: 2}
+  - {fileID: 1144684140778274, guid: 35d55bc5cf9b803448ac2d243b8c3301, type: 2}
   minDistanceFromPlayer: 10
   _spawnChanceDelay: 2
   _spawnChance: 0.1
@@ -1427,6 +1428,11 @@ Prefab:
         type: 2}
       propertyPath: _shootDistance
       value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 114306356567708788, guid: 66f4266c68fffdd47bf92819ce39cd1c,
+        type: 2}
+      propertyPath: _slowTimeAmount
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f4266c68fffdd47bf92819ce39cd1c, type: 2}
