@@ -39,7 +39,7 @@ public class EnemySpawner : Spawner
     {
         while(true)
         {
-            yield return new WaitForSeconds(_spawnDelay);
+            yield return new WaitForSeconds(_spawnDelay * WibblyWobbly.TimeSpeed);
             Spawn();
             _spawnDelay = Mathf.Clamp(
                 _spawnDelay * _spawnDelayMultiplier,
