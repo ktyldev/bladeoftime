@@ -1335,6 +1335,7 @@ GameObject:
   - component: {fileID: 114595604021985780}
   - component: {fileID: 114699431951285996}
   - component: {fileID: 136956930915527382}
+  - component: {fileID: 54068184650851010}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5628,6 +5629,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1740263416030868}
   m_Mesh: {fileID: 4300000, guid: a021064f0ab3ef544a0dfb04dc62f864, type: 3}
+--- !u!54 &54068184650851010
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512260655299500}
+  serializedVersion: 2
+  m_Mass: 1000
+  m_Drag: 1000
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65663254144054172
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -6179,6 +6195,7 @@ MonoBehaviour:
   _deceleration: 0.07
   _shootDistance: 50
   _baseGunCooldown: 5
+  _staggerTime: 0.8
 --- !u!114 &114306356567708788
 MonoBehaviour:
   m_ObjectHideFlags: 1

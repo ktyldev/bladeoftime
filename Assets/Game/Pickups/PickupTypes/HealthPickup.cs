@@ -9,4 +9,9 @@ public class HealthPickup : Pickup {
         this.Find<Health>(GameTags.Player).DoHeal();
         print("healed!");
     }
+
+    public override bool CanPickup()
+    {
+        return this.Find<Health>(GameTags.Player).NeedsHealing;
+    }
 }

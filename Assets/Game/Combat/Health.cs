@@ -15,6 +15,8 @@ public class Health : MonoBehaviour
     public UnityEvent Hit { get; private set; }
     public UnityEvent Heal { get; private set; }
 
+    public bool NeedsHealing { get { return Value < _maxValue; } }
+
     public void DoDamage(int damage)
     {
         if (Value <= 0)
