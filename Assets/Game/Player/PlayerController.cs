@@ -160,7 +160,6 @@ public class PlayerController : MonoBehaviour
         string trigger = string.Format("melee0{0}", attackNumber);
 
         _sfx.PlayRandomSoundDelayed("attack", 5, .1f);
-        _sfx.PlayRandomSoundDelayed("hit", 5, .7f);
 
         anim.SetFloat("inputV", 0f);
         anim.SetTrigger(trigger);
@@ -181,6 +180,7 @@ public class PlayerController : MonoBehaviour
         print("melee!");
         Aim(_input.AimDirection);
         float _movementOffset = (_momentum == Vector3.zero) ? 0.15f : 0f;
+
         yield return new WaitForSeconds(
             Mathf.Clamp((_attackTime * _attackMoment) + _movementOffset,
             0f,
@@ -201,6 +201,15 @@ public class PlayerController : MonoBehaviour
             .Select(h => h.collider.gameObject.GetComponent<Health>())
             .Where(h => h != null)
             .ToArray();
+
+        if (hitObjects.Length > 0)
+        {
+            _sfx.PlayRandomSound("hit", 5);
+        }
+        else
+        {
+            _sfx.PlayRandomSound("nohit", 2);
+        }
 
         foreach (var hitHealth in hitObjects)
         {

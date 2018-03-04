@@ -175,3 +175,9 @@ MonoBehaviour:
   - soundName: hit05
     soundObject: {fileID: 1224861796410320, guid: ade57d035b241f646b9ac0e0f906a989,
       type: 2}
+  - soundName: nohit01
+    soundObject: {fileID: 1177947007954962, guid: b279c892441d8dd40952fe1b45dc8b0e,
+      type: 2}
+  - soundName: nohit02
+    soundObject: {fileID: 1493353049312868, guid: 9a24e4925dd0ff946bf699eae07d422b,
+      type: 2}
