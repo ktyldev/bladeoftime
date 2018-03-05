@@ -14,5 +14,5 @@ Cat, Cyndr, Ben, Mike, Ralph
 [Download](https://monodokimes.itch.io/bladeoftime)
 
 Unity-chan copyright of Unity Technologies Japan
-
+[License](http://unity-chan.com/contents/license_en/)
 ![Unity-chan License](http://unity-chan.com/images/imageLicenseLogo.png)
