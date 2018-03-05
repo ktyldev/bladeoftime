@@ -12,3 +12,7 @@ Team Members:
 Cat, Cyndr, Ben, Mike, Ralph
 
 [Download](https://monodokimes.itch.io/bladeoftime)
+
+Unity-chan copyright of Unity Technologies Japan
+
+![Unity-chan License](http://unity-chan.com/images/imageLicenseLogo.png)
