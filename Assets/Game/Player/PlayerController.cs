@@ -64,8 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _input = Instantiate(_controlMode, transform)
-            .GetComponent<IControlMode>();
+        _input = this.Find<ControlMode>(GameTags.Input);
     }
 
     void Start()

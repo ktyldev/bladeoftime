@@ -53,7 +53,7 @@ public class PlayerShoot : MonoBehaviour
         _camera = Camera.main.GetComponent<CameraController>();
         _sfx = this.Find<SFXManager>(GameTags.Sound);
         _currentCharge = _totalCharge;
-        _input = GetComponentInChildren<IControlMode>();
+        _input = this.Find<ControlMode>(GameTags.Input);
         _line = _lineRenderer.GetComponent<LineRenderer>();
         if (_line == null || _input == null)
             throw new Exception();
