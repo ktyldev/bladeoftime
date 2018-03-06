@@ -67,7 +67,7 @@ public class CameraController : MonoBehaviour {
         {
             elapsed += Time.deltaTime;
 
-            var shakeValue = _maxShakeMagnitude;
+            var shakeValue = _maxShakeMagnitude * (1f / WibblyWobbly.TimeSpeed);
 
             var _shakeOffset = new Vector3(
                 shakeValue * (UnityEngine.Random.value - 0.5f), 
