@@ -849,6 +849,7 @@ MonoBehaviour:
   _lightFadeSpeed: 0.2
   _lightFadeTime: 0.3
   _deathFX: {fileID: 1079240529331522, guid: 19f10c9b367a20d4e8a0e2a8a59d2a56, type: 2}
+  _despawnDistance: 150
 --- !u!114 &114151344601405880
 MonoBehaviour:
   m_ObjectHideFlags: 1

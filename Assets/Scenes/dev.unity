@@ -849,10 +849,10 @@ MonoBehaviour:
   templates:
   - {fileID: 1536696236413526, guid: c19925c2dd09c2a49b99cc9bb4d1c504, type: 2}
   minDistanceFromPlayer: 15
-  _spawnDelayMax: 5
-  _spawnDelayMin: 0.75
-  _spawnDelayMultiplier: 0.95
-  _spawnRate: 0
+  _baseSpawnDelay: 2
+  _spawnDelayDecrement: 0.05
+  _spawnDecrementDelay: 15
+  _minSpawnDelay: 0.1
 --- !u!114 &931583260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,9 +869,8 @@ MonoBehaviour:
   - {fileID: 1144684140778274, guid: 35d55bc5cf9b803448ac2d243b8c3301, type: 2}
   - {fileID: 1041579588650704, guid: edc11bed66e0c2c468d57808e1fcd6cf, type: 2}
   - {fileID: 1390501019825614, guid: 98c8173acefeb3b40aea7340b9f2c553, type: 2}
-  minDistanceFromPlayer: 20
-  _spawnChanceDelay: 3
-  _spawnChance: 0.2
+  minDistanceFromPlayer: 10
+  _spawnDelay: 5
 --- !u!1001 &1004334178
 Prefab:
   m_ObjectHideFlags: 0

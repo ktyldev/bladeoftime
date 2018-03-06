@@ -8,48 +8,45 @@ using UnityEngine;
 public class EnemySpawner : Spawner
 {
     [SerializeField]
-    private float _spawnDelayMax = 5f;
+    private float _baseSpawnDelay;
     [SerializeField]
-    private float _spawnDelayMin = .5f;
+    private float _spawnDelayDecrement;
     [SerializeField]
-    [Range(0.95f, 1f)]
-    private float _spawnDelayMultiplier = .95f;
+    private float _spawnDecrementDelay;
     [SerializeField]
-    private float _spawnRate;
-
+    private float _minSpawnDelay;
+    
     private float _spawnDelay;
     protected override bool CanSpawn(GameObject template)
     {
         return true;
     }
-
-    void Update()
+    
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        _spawnDelay = _baseSpawnDelay;
+
+        StartCoroutine(SpawnEnemies());
+        StartCoroutine(IncreaseSpawnRate());
+    }
+
+    private IEnumerator SpawnEnemies()
+    {
+        while (true)
         {
             Spawn();
+            yield return new WaitForSeconds(_spawnDelay * (1f / WibblyWobbly.TimeSpeed));
+            if (GameOver.IsEnded())
+                yield break;
         }
     }
 
-    private void Awake()
+    private IEnumerator IncreaseSpawnRate()
     {
-        _spawnDelay = _spawnDelayMax;
-        StartCoroutine(SpawnRoutine());
-    }
-
-    IEnumerator SpawnRoutine()
-    {
-        while(true)
+        while (_spawnDelay > _minSpawnDelay)
         {
-            yield return new WaitForSeconds(_spawnDelay * WibblyWobbly.TimeSpeed);
-            if (GameOver.IsEnded())
-                yield break;
-            Spawn();
-            _spawnDelay = Mathf.Clamp(
-                _spawnDelay * _spawnDelayMultiplier,
-                _spawnDelayMin,
-                _spawnDelayMax
-            );
+            yield return new WaitForSeconds(_spawnDecrementDelay * WibblyWobbly.TimeSpeed);
+            _spawnDelay -= Mathf.Clamp(_spawnDelayDecrement, _minSpawnDelay, Mathf.Infinity);
         }
     }
 }

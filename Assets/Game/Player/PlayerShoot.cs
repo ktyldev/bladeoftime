@@ -147,7 +147,7 @@ public class PlayerShoot : MonoBehaviour
             Instantiate(_projectile, _projectileSpawn.position, _projectileSpawn.rotation);
 
             _currentCharge -= _shotChargeCost;
-            yield return new WaitForSeconds(_shotDelay);
+            yield return new WaitForSeconds(_shotDelay * (1f / WibblyWobbly.TimeSpeed));
         }
         _isFiring = false;
     }

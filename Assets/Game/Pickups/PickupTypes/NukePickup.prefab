@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca53693bfcb11714ba625631fc1896d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _despawnDistance: 30
   _range: 20
 --- !u!135 &135892196775892024
 SphereCollider:

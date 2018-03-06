@@ -416,6 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b4e6fdd4e8653a4da4e0cda9786ef2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _despawnDistance: 30
   timeSlowAmount: 0.25
 --- !u!135 &135172653403026592
 SphereCollider:

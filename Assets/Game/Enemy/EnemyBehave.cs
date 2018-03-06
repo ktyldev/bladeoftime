@@ -23,6 +23,8 @@ public class EnemyBehave : MonoBehaviour {
     private float _lightFadeTime;
     [SerializeField]
     private GameObject _deathFX;
+    [SerializeField]
+    private float _despawnDistance;
     
     private Transform _player;
     private bool _canAttack = true;
@@ -90,7 +92,7 @@ public class EnemyBehave : MonoBehaviour {
             StartCoroutine(Scream());
         }
 
-        if (_playerDist > 100f)
+        if (_playerDist > _despawnDistance)
         {
             Destroy(gameObject);
         }

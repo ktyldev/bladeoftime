@@ -5,12 +5,7 @@ using UnityEngine;
 public class PickupSpawner : Spawner {
 
     [SerializeField]
-    [Range(0.1f, 5f)]
-    private float _spawnChanceDelay = 1f;
-
-    [SerializeField]
-    [Range(0f, 1f)]
-    private float _spawnChance = .1f;
+    private float _spawnDelay;
 
     protected override bool CanSpawn(GameObject template)
     {
@@ -26,14 +21,11 @@ public class PickupSpawner : Spawner {
     {
         while (true)
         {
-            yield return new WaitForSeconds(_spawnChanceDelay * (2.5f - (WibblyWobbly.TimeSpeed)) * .6f);
+            yield return new WaitForSeconds(_spawnDelay);
             if (GameOver.IsEnded())
                 yield break;
-
-            if (Random.Range(0f, 1f) < _spawnChance)
-            {
-                Spawn();
-            }
+            
+            Spawn();
         }
     }
 }
